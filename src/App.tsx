@@ -6,6 +6,7 @@ import { SiteHeader } from './components/SiteHeader';
 import { HeroSection } from './components/HeroSection';
 import { InvisibleImpactSection } from './components/InvisibleImpact/InvisibleImpactSection';
 import { LivingCircleSection } from './components/LivingCircle/LivingCircleSection';
+import { FinalPromiseSection } from './components/FinalPromise/FinalPromiseSection';
 import { MyCircleView } from './components/MyCircle/MyCircleView';
 import { CareConcernView } from './components/CareConcern/CareConcernView';
 import { CheckInView } from './components/CheckIn/CheckInView';
@@ -130,6 +131,10 @@ const AppContent: React.FC = () => {
             />
             <InvisibleImpactSection reducedMotion={reducedMotion} />
             <LivingCircleSection reducedMotion={reducedMotion} />
+            <FinalPromiseSection
+              reducedMotion={reducedMotion}
+              onOpenPrototypeModal={(item) => setActiveProtoModal(item)}
+            />
           </>
         )}
 

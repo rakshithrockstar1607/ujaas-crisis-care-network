@@ -1,0 +1,693 @@
+/* ==========================================================================
+   FINAL HOMEPAGE SECTION: The Promise of Care + Call to Action + Footer
+   70% Humanist Editorial x 30% Warm Neo-Brutalism
+   Strictly Zero Em Dashes
+   ========================================================================== */
+
+.finalSection {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg-ivory, #FAF7F0);
+  color: var(--color-primary-navy, #102744);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Transition Canopy from Section 03 (Deep Midnight Navy to Warm Ivory)
+   ========================================================================== */
+.canopyWrapper {
+  position: relative;
+  width: 100%;
+  background-color: #071C34; /* Exact Section 03 background */
+  overflow: hidden;
+  line-height: 0;
+}
+
+.canopySvg {
+  display: block;
+  width: 100%;
+  height: clamp(65px, 8vw, 110px);
+}
+
+/* Central Beacon Crest with UJAAS Emblem */
+.beaconContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(-72px, -6vw, -48px);
+  padding: 0 0 1rem;
+  z-index: 10;
+}
+
+.beaconHalo {
+  position: absolute;
+  top: 32%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(240px, 32vw, 420px);
+  height: clamp(240px, 32vw, 420px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 145, 60, 0.45) 0%,
+    rgba(246, 175, 75, 0.28) 25%,
+    rgba(255, 200, 120, 0.12) 50%,
+    rgba(250, 247, 240, 0) 72%
+  );
+  filter: blur(32px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.beaconEmblemWrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  transition: transform 220ms var(--ease-spring, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.beaconEmblemWrap:hover {
+  transform: translateY(-2px);
+}
+
+.beaconEmblemImg {
+  width: auto;
+  height: clamp(48px, 5.5vw, 64px);
+  object-fit: contain;
+  filter: drop-shadow(0 6px 16px rgba(9, 28, 51, 0.12));
+}
+
+.beaconBrandText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  text-align: center;
+}
+
+.beaconWordmark {
+  font-family: var(--font-serif, "Canela", serif);
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-deep-navy, #091C33);
+  margin: 0;
+  line-height: 1;
+}
+
+.beaconTagline {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-action-orange, #F45124);
+  margin: 0;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Background Subtle Dune Curves (Soft Warm Editorial Texture)
+   ========================================================================== */
+.dunesBackground {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.55;
+}
+
+.duneWave {
+  position: absolute;
+  width: 140%;
+  left: -20%;
+  fill: none;
+  stroke: rgba(230, 220, 206, 0.65);
+  stroke-width: 1.5;
+}
+
+.duneWave1 {
+  top: 25%;
+}
+
+.duneWave2 {
+  top: 50%;
+  stroke: rgba(238, 228, 214, 0.85);
+}
+
+.duneWave3 {
+  top: 72%;
+}
+
+/* ==========================================================================
+   Shared Max-Width Container
+   ========================================================================== */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3.5rem);
+  box-sizing: border-box;
+  z-index: 5;
+}
+
+/* ==========================================================================
+   ZONE A: The Three-Stage Care Journey Card
+   ========================================================================== */
+.timelineCardWrapper {
+  margin: clamp(2rem, 3.5vw, 3.5rem) auto clamp(2.5rem, 4.5vw, 4.5rem);
+  max-width: 1100px;
+}
+
+.timelineCard {
+  background: var(--color-pure-white, #FFFFFF);
+  border: 1.5px solid rgba(16, 39, 68, 0.08);
+  border-radius: var(--radius-xl, 24px);
+  padding: clamp(1.75rem, 3vw, 2.75rem) clamp(1.5rem, 3.5vw, 3.25rem);
+  box-shadow: 0 14px 38px -10px rgba(9, 28, 51, 0.07), 0 2px 6px rgba(9, 28, 51, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1rem, 2vw, 2.25rem);
+  transition: box-shadow 260ms var(--ease-spring), border-color 260ms var(--ease-spring);
+}
+
+.timelineCard:hover {
+  border-color: rgba(244, 81, 36, 0.22);
+  box-shadow: 0 18px 46px -10px rgba(9, 28, 51, 0.1), 0 3px 8px rgba(9, 28, 51, 0.04);
+}
+
+/* Milestone Item Block */
+.milestone {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+  min-width: 0;
+  transition: transform 200ms var(--ease-spring);
+}
+
+.milestone:hover {
+  transform: translateY(-2px);
+}
+
+.milestoneIconWrap {
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  border-radius: 50%;
+  background-color: #FFF2E8;
+  border: 1.5px solid #FCD4BE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-action-orange, #F45124);
+  flex-shrink: 0;
+  transition: background-color 200ms ease, border-color 200ms ease, transform 200ms var(--ease-spring);
+}
+
+.milestone:hover .milestoneIconWrap {
+  background-color: #FFE6D5;
+  border-color: var(--color-action-orange, #F45124);
+  transform: scale(1.06);
+}
+
+.milestoneContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.milestoneStepNumber {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-action-orange, #F45124);
+  margin: 0;
+  line-height: 1;
+}
+
+.milestoneTitle {
+  font-family: var(--font-serif, "Canela", serif);
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+  font-weight: 700;
+  color: var(--color-deep-navy, #091C33);
+  margin: 0.15rem 0 0.25rem;
+  line-height: 1.25;
+}
+
+.milestoneDescription {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: clamp(0.82rem, 0.95vw, 0.88rem);
+  line-height: 1.5;
+  color: var(--color-secondary-text, #526072);
+  margin: 0;
+}
+
+/* Connecting Line Between Milestones */
+.timelineConnector {
+  position: relative;
+  flex: 0 0 clamp(40px, 5vw, 75px);
+  height: 1.5px;
+  background-color: rgba(244, 81, 36, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.connectorDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--color-action-orange, #F45124);
+  border: 2px solid var(--color-pure-white, #FFFFFF);
+  box-shadow: 0 0 0 1px rgba(244, 81, 36, 0.3);
+}
+
+/* ==========================================================================
+   ZONE B: The Emotional Conclusion & Calls to Action
+   ========================================================================== */
+.conclusionWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto clamp(4rem, 6vw, 6.5rem);
+}
+
+/* Editorial Eyebrow with Short Horizontal Dash */
+.eyebrowRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: clamp(1rem, 1.8vw, 1.5rem);
+}
+
+.eyebrowDash {
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-action-orange, #F45124);
+  border-radius: 2px;
+}
+
+.eyebrowText {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-action-orange, #F45124);
+}
+
+/* Grand Primary Headline in Canela */
+.grandHeadline {
+  font-family: var(--font-serif, "Canela", serif);
+  font-size: clamp(2.6rem, 5.2vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--color-deep-navy, #091C33);
+  margin: 0 0 1.25rem;
+}
+
+.headlineHighlight {
+  color: var(--color-action-orange, #F45124);
+}
+
+/* Supporting Narrative Paragraph */
+.supportingText {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.68;
+  color: var(--color-secondary-text, #526072);
+  max-width: 680px;
+  margin: 0 auto clamp(2rem, 3.2vw, 2.75rem);
+}
+
+/* Principal CTA Button (Warm Neo-Brutalism) */
+.ctaButtonGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.15rem;
+}
+
+.principalCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background-color: var(--color-action-orange, #F45124);
+  color: var(--color-pure-white, #FFFFFF);
+  border: 2px solid var(--color-deep-navy, #091C33);
+  border-radius: var(--radius-btn, 14px);
+  padding: 0.95rem clamp(1.75rem, 3.2vw, 2.5rem);
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  font-weight: 700;
+  box-shadow: 0 4px 0 0 var(--color-deep-navy, #091C33);
+  cursor: pointer;
+  transition: transform 180ms var(--ease-spring), box-shadow 180ms var(--ease-spring), background-color 180ms ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.principalCtaBtn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 0 6px 0 0 var(--color-deep-navy, #091C33);
+  background-color: #E24317;
+}
+
+.principalCtaBtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 1px 0 0 var(--color-deep-navy, #091C33);
+}
+
+.btnArrowIcon {
+  transition: transform 200ms var(--ease-spring);
+}
+
+.principalCtaBtn:hover .btnArrowIcon {
+  transform: translateX(4px);
+}
+
+/* Secondary Smooth Scroll Link */
+.secondaryTextLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-deep-navy, #091C33);
+  background: transparent;
+  border: none;
+  padding: 0.2rem 0;
+  border-bottom: 1.5px solid var(--color-action-orange, #F45124);
+  cursor: pointer;
+  transition: color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.secondaryTextLink:hover {
+  color: var(--color-action-orange, #F45124);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   ZONE C: The Integrated Footer
+   ========================================================================== */
+.footer {
+  width: 100%;
+  border-top: 1px solid var(--color-hairline, #DDD8CE);
+  background-color: var(--color-bg-ivory, #FAF7F0);
+  padding: clamp(2.25rem, 3.5vw, 3rem) 0 2.5rem;
+  box-sizing: border-box;
+}
+
+.footerContainer {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3.5rem);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* Main Top Row */
+.footerMainRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+}
+
+/* Brand Lockup on Left */
+.footerBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footerEmblem {
+  width: 32px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.footerBrandText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.footerWordmark {
+  font-family: var(--font-serif, "Canela", serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-deep-navy, #091C33);
+  line-height: 1;
+}
+
+.footerTagline {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-action-orange, #F45124);
+  line-height: 1;
+}
+
+/* Middle Navigation Links */
+.footerNav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  flex-wrap: wrap;
+}
+
+.footerNavLink {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary-navy, #102744);
+  background: transparent;
+  border: none;
+  padding: 0.25rem 0;
+  cursor: pointer;
+  transition: color 160ms ease;
+  white-space: nowrap;
+}
+
+.footerNavLink:hover {
+  color: var(--color-action-orange, #F45124);
+}
+
+/* Vertical Dividers */
+.footerDivider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--color-hairline, #DDD8CE);
+  flex-shrink: 0;
+}
+
+/* Right Side: Social Media Circles & Disclaimer */
+.footerRight {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.socialIconsGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.socialBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-hairline-dark, #C9C2B5);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-deep-navy, #091C33);
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.socialBtn:hover {
+  background-color: var(--color-pure-white, #FFFFFF);
+  border-color: var(--color-action-orange, #F45124);
+  color: var(--color-action-orange, #F45124);
+  transform: translateY(-1px);
+}
+
+.footerPrototypeNote {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #7A8796;
+  max-width: 240px;
+  margin: 0;
+}
+
+/* Bottom Bar */
+.footerBottomBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(16, 39, 68, 0.06);
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: 0.78rem;
+  color: #8C99A8;
+}
+
+.footerCopyright {
+  margin: 0;
+}
+
+.footerDisclaimer {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .timelineCard {
+    padding: 2rem 2.25rem;
+    gap: 1.25rem;
+  }
+
+  .timelineConnector {
+    flex: 0 0 35px;
+  }
+
+  .milestone {
+    gap: 0.85rem;
+  }
+
+  .milestoneIconWrap {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+  }
+
+  .footerMainRow {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Timeline converts from horizontal row to smooth vertical flow */
+  .timelineCard {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.75rem 1.5rem;
+    gap: 0;
+  }
+
+  .milestone {
+    align-items: flex-start;
+    padding: 0.75rem 0;
+  }
+
+  .timelineConnector {
+    width: 1.5px;
+    height: 32px;
+    flex: none;
+    margin-left: 26px; /* Center aligned with 54px icon */
+    background-color: rgba(244, 81, 36, 0.35);
+  }
+
+  .connectorDot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .footerMainRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .footerDivider {
+    display: none;
+  }
+
+  .footerNav {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 1.25rem;
+  }
+
+  .footerRight {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .footerBottomBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grandHeadline {
+    font-size: 2.3rem;
+  }
+
+  .principalCtaBtn {
+    width: 100%;
+    padding: 0.95rem 1.25rem;
+  }
+}
+
+/* ==========================================================================
+   Accessibility & Reduced Motion
+   ========================================================================== */
+.reducedMotion .timelineCard,
+.reducedMotion .milestone,
+.reducedMotion .milestoneIconWrap,
+.reducedMotion .beaconEmblemWrap,
+.reducedMotion .principalCtaBtn,
+.reducedMotion .btnArrowIcon,
+.reducedMotion .socialBtn,
+.reducedMotion .secondaryTextLink {
+  transition: none !important;
+  transform: none !important;
+}
+
+.reducedMotion .milestone:hover,
+.reducedMotion .beaconEmblemWrap:hover,
+.reducedMotion .principalCtaBtn:hover,
+.reducedMotion .secondaryTextLink:hover {
+  transform: none !important;
+}
