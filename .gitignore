@@ -28,6 +28,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 *.log
+*.tmp
+~$*
 
 # Ephemeral testing scripts and test run artifacts
 /*.png
