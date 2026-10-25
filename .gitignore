@@ -40,6 +40,7 @@ phase2_verified/
 ref_thumbs/
 
 # Working design references & dumps (not required for runtime/build)
+/Premiere Pro Project*
 /Phase *
 /Section *
 /Website References

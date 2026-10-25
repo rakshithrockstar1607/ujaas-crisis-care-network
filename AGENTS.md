@@ -49,17 +49,17 @@ import { getAssetUrl } from '../utils/assets';
 The helper function handles both root `/` and subpath `/ujaas-crisis-care-network/` idempotently without double-prefixing.
 
 ### Rule 2: Asset Paths in CSS Modules
-In CSS files, use relative paths to `public/` or `assets/` so Vite processes and rebases them automatically during production builds:
+In CSS files, place bundled fonts or background images in `src/assets/` and use relative paths so Vite processes, hashes, and rebases them automatically during production builds without public-folder dev warnings:
 ```css
 /* In src/styles/fonts.css */
 @font-face {
   font-family: 'Canela';
-  src: url('../../public/fonts/canela/Canela-Regular-Trial.woff2') format('woff2');
+  src: url('../assets/fonts/canela/Canela-Regular-Trial.woff2') format('woff2');
 }
 
 /* In component CSS modules */
 .photoBackground {
-  background-image: url('../../../public/images/onboarding-elder.png');
+  background-image: url('../../assets/images/onboarding-elder.png');
 }
 ```
 

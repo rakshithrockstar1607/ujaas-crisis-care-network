@@ -23,7 +23,7 @@
 .photoBackground {
   position: absolute;
   inset: 0;
-  background-image: url('../../../public/images/onboarding-elder.png');
+  background-image: url('../../assets/images/onboarding-elder.png');
   background-size: cover;
   background-position: center top;
   z-index: 1;

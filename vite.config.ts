@@ -6,6 +6,18 @@ export default defineConfig(({ mode }) => ({
   plugins: [react()],
   server: {
     port: 3000,
-    open: false
+    open: false,
+    watch: {
+      ignored: [
+        '**/Premiere Pro Project*/**',
+        '**/Section*/**',
+        '**/Phase*/**',
+        '**/Website References/**',
+        '**/*.png',
+        '**/*.jpg',
+        '**/*.jpeg',
+        '**/*.webp'
+      ]
+    }
   }
 }));
