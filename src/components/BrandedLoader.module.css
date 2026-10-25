@@ -56,15 +56,16 @@
 .emblemImage {
   display: block;
   width: auto;
-  height: 125px;
-  max-height: 22vh;
+  height: clamp(140px, 22vw, 165px);
+  max-height: 28vh;
   object-fit: contain;
-  filter: drop-shadow(0 10px 24px rgba(9, 28, 51, 0.08));
+  filter: drop-shadow(0 12px 28px rgba(9, 28, 51, 0.1));
 }
 
 @media (min-width: 768px) {
   .emblemImage {
-    height: 145px;
+    height: clamp(195px, 16vw, 230px);
+    max-height: 32vh;
   }
 }
 
@@ -74,13 +75,21 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 160px;
-  height: 160px;
+  width: 190px;
+  height: 190px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 118, 44, 0.18) 0%, rgba(246, 165, 58, 0.08) 50%, transparent 75%);
-  filter: blur(25px);
+  background: radial-gradient(circle, rgba(255, 118, 44, 0.22) 0%, rgba(246, 165, 58, 0.1) 50%, transparent 75%);
+  filter: blur(28px);
   pointer-events: none;
   animation: pulseHalo 2.5s infinite ease-in-out;
+}
+
+@media (min-width: 768px) {
+  .flameEmberHalo {
+    width: 270px;
+    height: 270px;
+    filter: blur(36px);
+  }
 }
 
 @keyframes pulseHalo {
@@ -119,9 +128,9 @@
 
 .wordmark {
   font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+  font-size: clamp(2.2rem, 4.4vw, 3.2rem);
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   color: var(--color-deep-navy);
   line-height: 1;
   margin: 0;
@@ -129,9 +138,9 @@
 
 .descriptor {
   font-family: var(--font-sans);
-  font-size: clamp(0.64rem, 1.1vw, 0.78rem);
+  font-size: clamp(0.72rem, 1.1vw, 0.86rem);
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--color-action-orange);
   margin: 0;

@@ -16,7 +16,8 @@ import {
 import {
   ChildSafeguardingCase,
   ReferralCategory,
-  ChildHandoffRecord
+  ChildHandoffRecord,
+  NeedStatus
 } from '../types/childSafe';
 import { INITIAL_CARE_STATE, INITIAL_CONTACTS, INITIAL_TASKS } from '../data/careDemoData';
 import { MATCHED_HELPERS, DEMO_RESOURCES, CANONICAL_NISHA_REQUEST } from '../data/helpNowDemoData';
@@ -89,6 +90,10 @@ interface CareContextValue {
   documentSimulatedHandoff: (record: ChildHandoffRecord) => void;
   resolveChildSafeFollowUp: (notes: string) => void;
   resetChildSafeScenario: () => void;
+  assignCoordinatorFollowUp: (coordinatorName: string, role: string, reason: string, nextReview: string, outstandingNeeds?: string[]) => void;
+  updateCareArrangement: (status: 'not_assessed' | 'under_professional_review' | 'in_place' | 'follow_up_required', placementName: string, notes: string) => void;
+  updateNeedStatus: (needKey: 'supervisionStatus' | 'foodStatus' | 'medicalStatus' | 'shelterStatus', newStatus: any) => void;
+  recordCoordinatorFollowUpEvent: (reviewed: string, unresolved: string, nextStep: string) => void;
 
   // Actions
   navigateTo: (view: ViewType) => void;
@@ -948,14 +953,31 @@ export const CareProvider: React.FC<{ children: React.ReactNode }> = ({ children
         neighbourhood: draft.neighbourhood || 'Indiranagar',
         landmark: draft.landmark || 'Near 100ft Road Bus Stop, 4th Cross',
         approximateArea: draft.approximateArea || 'Indiranagar, Bengaluru',
+        childName: draft.childName || 'Not known',
+        observedDateTime: draft.observedDateTime || 'April 24, 2018, 14:00 IST',
+        caregiverPresent: draft.caregiverPresent || 'no',
         factualObservations:
           draft.factualObservations ||
-          'I noticed a young child (approx 4–6 years old) alone near the bus stop holding a doll. I waited nearby for 30 minutes, but no familiar caregiver or adult was visibly present. The child appears awake, alert, and responsive, but quiet.',
+          'I noticed a young child (approx 4-6 years old) alone near the bus stop holding a doll. I waited nearby for 30 minutes, but no familiar caregiver or adult was visibly present. The child appears awake, alert, and responsive, but quiet.',
         observedCondition: draft.observedCondition || ['appears_responsive'],
         presenceState: draft.presenceState || 'with_reporter',
         servicesContacted: draft.servicesContacted || 'not_contacted',
         servicesContactedDetails: draft.servicesContactedDetails || '',
         contactPreference: draft.contactPreference || 'phone',
+        immediateNeeds: draft.immediateNeeds || CANONICAL_CHILD_SAFE_DRAFT.immediateNeeds || {
+          supervision: 'yes',
+          supervisionStatus: 'not_addressed',
+          foodAndWater: 'yes',
+          foodStatus: 'pending',
+          medicalAttention: 'not_sure',
+          medicalStatus: 'not_confirmed',
+          safeTemporaryShelter: 'yes',
+          shelterStatus: 'under_review'
+        },
+        careArrangement: CANONICAL_RECORDED_CHILD_CASE.careArrangement,
+        assignedCoordinator: CANONICAL_RECORDED_CHILD_CASE.assignedCoordinator,
+        nextReviewDue: CANONICAL_RECORDED_CHILD_CASE.nextReviewDue,
+        referralsList: CANONICAL_RECORDED_CHILD_CASE.referralsList,
         status: 'recorded_local',
         createdAt: now,
         updatedAt: now,
@@ -1178,6 +1200,169 @@ export const CareProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }));
   };
 
+  const assignCoordinatorFollowUp = (
+    coordinatorName: string,
+    role: string,
+    reason: string,
+    nextReview: string,
+    outstandingNeeds?: string[]
+  ) => {
+    setState(prev => {
+      if (!prev.childSafeCase) return prev;
+      const now = 'April 24, 2018, 16:00 IST';
+      const updatedCase: ChildSafeguardingCase = {
+        ...prev.childSafeCase,
+        assignedCoordinator: {
+          id: 'coord-assigned-01',
+          name: coordinatorName || 'Priya Sharma',
+          role: role || 'Child Protection Officer (Simulated)',
+          phone: '+91 98765 43210',
+          email: 'priya.sharma@ujaas.org',
+          badge: 'Designated Officer'
+        },
+        nextReviewDue: nextReview || 'April 26, 2018',
+        updatedAt: now,
+        activityHistory: [
+          ...prev.childSafeCase.activityHistory,
+          {
+            id: `act-cs-${Date.now()}-assign`,
+            caseId: prev.childSafeCase.id,
+            timestamp: now,
+            action: `Follow-up visit and monitoring assigned to ${coordinatorName || 'Priya Sharma'}`,
+            actorRole: 'coordinator',
+            actorName: FICTIONAL_COORDINATOR_PROFILE.name,
+            safeNote: reason
+              ? `Reason: ${reason}. Next review due: ${nextReview}.${outstandingNeeds && outstandingNeeds.length > 0 ? ' Priority needs: ' + outstandingNeeds.join(', ') : ''}`
+              : 'Routine safeguarding check scheduled with designated coordinator.'
+          }
+        ]
+      };
+      return {
+        ...prev,
+        childSafeCase: updatedCase
+      };
+    });
+  };
+
+  const updateCareArrangement = (
+    status: 'not_assessed' | 'under_professional_review' | 'in_place' | 'follow_up_required',
+    placementName: string,
+    notes: string
+  ) => {
+    setState(prev => {
+      if (!prev.childSafeCase) return prev;
+      const now = 'April 24, 2018, 16:15 IST';
+      const updatedCase: ChildSafeguardingCase = {
+        ...prev.childSafeCase,
+        careArrangement: {
+          status,
+          placementName: placementName || 'UJAAS Partner Shelter, Indiranagar',
+          notes: notes || 'Safe temporary arrangement documented in demo.',
+          updatedAt: now
+        },
+        updatedAt: now,
+        activityHistory: [
+          ...prev.childSafeCase.activityHistory,
+          {
+            id: `act-cs-${Date.now()}-care`,
+            caseId: prev.childSafeCase.id,
+            timestamp: now,
+            action: `Care arrangement updated: ${status.replace(/_/g, ' ')}`,
+            actorRole: 'coordinator',
+            actorName: FICTIONAL_COORDINATOR_PROFILE.name,
+            safeNote: `${placementName ? placementName + ': ' : ''}${notes || 'Temporary care documented.'}`
+          }
+        ]
+      };
+      return {
+        ...prev,
+        childSafeCase: updatedCase
+      };
+    });
+  };
+
+  const updateNeedStatus = (
+    needKey: 'supervisionStatus' | 'foodStatus' | 'medicalStatus' | 'shelterStatus',
+    newStatus: NeedStatus
+  ) => {
+    setState(prev => {
+      if (!prev.childSafeCase) return prev;
+      const currentNeeds = prev.childSafeCase.immediateNeeds || {
+        supervision: 'yes',
+        supervisionStatus: 'not_addressed',
+        foodAndWater: 'yes',
+        foodStatus: 'pending',
+        medicalAttention: 'not_sure',
+        medicalStatus: 'not_confirmed',
+        safeTemporaryShelter: 'yes',
+        shelterStatus: 'under_review'
+      };
+      const updatedNeeds = {
+        ...currentNeeds,
+        [needKey]: newStatus
+      };
+      const labelMap = {
+        supervisionStatus: 'Adult Supervision',
+        foodStatus: 'Food and Water',
+        medicalStatus: 'Medical Attention',
+        shelterStatus: 'Temporary Shelter'
+      };
+      const now = 'April 24, 2018, 16:30 IST';
+      const updatedCase: ChildSafeguardingCase = {
+        ...prev.childSafeCase,
+        immediateNeeds: updatedNeeds,
+        updatedAt: now,
+        activityHistory: [
+          ...prev.childSafeCase.activityHistory,
+          {
+            id: `act-cs-${Date.now()}-need`,
+            caseId: prev.childSafeCase.id,
+            timestamp: now,
+            action: `Need status updated for ${labelMap[needKey] || needKey}: ${newStatus.replace(/_/g, ' ')}`,
+            actorRole: 'coordinator',
+            actorName: FICTIONAL_COORDINATOR_PROFILE.name,
+            safeNote: `Recorded as ${newStatus.replace(/_/g, ' ')} in demo simulation.`
+          }
+        ]
+      };
+      return {
+        ...prev,
+        childSafeCase: updatedCase
+      };
+    });
+  };
+
+  const recordCoordinatorFollowUpEvent = (
+    reviewed: string,
+    unresolved: string,
+    nextStep: string
+  ) => {
+    setState(prev => {
+      if (!prev.childSafeCase) return prev;
+      const now = 'April 24, 2018, 16:45 IST';
+      const updatedCase: ChildSafeguardingCase = {
+        ...prev.childSafeCase,
+        updatedAt: now,
+        activityHistory: [
+          ...prev.childSafeCase.activityHistory,
+          {
+            id: `act-cs-${Date.now()}-folrev`,
+            caseId: prev.childSafeCase.id,
+            timestamp: now,
+            action: `Follow-up review recorded: ${reviewed || 'Care continuity checked'}`,
+            actorRole: 'coordinator',
+            actorName: FICTIONAL_COORDINATOR_PROFILE.name,
+            safeNote: `${unresolved ? 'Unresolved: ' + unresolved + '. ' : ''}${nextStep ? 'Next: ' + nextStep : ''}`
+          }
+        ]
+      };
+      return {
+        ...prev,
+        childSafeCase: updatedCase
+      };
+    });
+  };
+
   const resetHelpNowScenario = () => {
     setState(prev => ({
       ...prev,
@@ -1351,6 +1536,10 @@ export const CareProvider: React.FC<{ children: React.ReactNode }> = ({ children
     documentSimulatedHandoff,
     resolveChildSafeFollowUp,
     resetChildSafeScenario,
+    assignCoordinatorFollowUp,
+    updateCareArrangement,
+    updateNeedStatus,
+    recordCoordinatorFollowUpEvent,
 
     navigateTo,
     goBack,

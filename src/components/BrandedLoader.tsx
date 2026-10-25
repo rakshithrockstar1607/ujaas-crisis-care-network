@@ -97,10 +97,10 @@ export const BrandedLoader: React.FC<BrandedLoaderProps> = ({
             <source srcSet={getAssetUrl('/images/logo-emblem.webp')} type="image/webp" />
             <img
               src={getAssetUrl('/images/logo-emblem.png')}
-              alt="UJAAS emblem — two human figures holding hands inside an enduring flame"
+              alt="UJAAS emblem: two human figures holding hands inside an enduring flame"
               className={styles.emblemImage}
-              width={110}
-              height={140}
+              width={160}
+              height={205}
             />
           </picture>
           <div className={styles.flameEmberHalo} aria-hidden="true" />

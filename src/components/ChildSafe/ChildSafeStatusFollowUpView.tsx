@@ -1,302 +1,386 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Check,
-  Shield,
-  ArrowLeft,
-  AlertTriangle,
   Lock,
-  UserCheck
+  User,
+  Users,
+  Clock,
+  Calendar,
+  ArrowRight,
+  GitBranch,
+  X
 } from 'lucide-react';
 import { useCareContext } from '../../context/CareContext';
+import { getAssetUrl } from '../../utils/assets';
 import styles from './ChildSafeStatusFollowUpView.module.css';
 
 export const ChildSafeStatusFollowUpView: React.FC = () => {
-  const { childSafeCase, toggleCoordinatorDemoMode, navigateTo } = useCareContext();
+  const {
+    childSafeCase,
+    toggleCoordinatorDemoMode,
+    navigateTo
+  } = useCareContext();
 
-  const currentStatus = childSafeCase?.status || 'recorded_local';
+  const [showSummaryModal, setShowSummaryModal] = useState(false);
 
-  const isHandoffDone =
-    currentStatus === 'demo_handoff_documented' ||
-    currentStatus === 'follow_up_open' ||
-    currentStatus === 'closed_in_demo';
-
-  const isAckDone = isHandoffDone || currentStatus === 'demo_referral_acknowledged';
-  const isReferralDone = isAckDone || currentStatus === 'demo_referral_prepared';
-  const isReviewDone = isReferralDone || currentStatus === 'demo_review_in_progress';
+  const caseId = childSafeCase?.id || 'UJAAS-CS-2018-001';
+  const reporterName = childSafeCase?.reporterName || 'Aarav Sharma';
+  const area = childSafeCase?.approximateArea || 'Indiranagar, Bengaluru';
 
   return (
     <div className={styles.container}>
       <div className={styles.contentWrap}>
-        {/* Back Link */}
-        <button
-          type="button"
-          className={styles.backBtn}
-          onClick={() => navigateTo('help_now_landing')}
-        >
-          <ArrowLeft size={16} />
-          <span>Return to Help Now</span>
-        </button>
+        {/* Top Bar Row: Eyebrow on left, Mode Switchers on right matching Reference 04 */}
+        <div className={styles.topBarRow}>
+          <div className={styles.eyebrowRow}>
+            <span className={styles.eyebrowDash} aria-hidden="true" />
+            <span className={styles.eyebrowText}>CARE CONTINUITY</span>
+          </div>
 
-        {/* Dynamic Heading based on case progress */}
-        <div className={styles.header}>
-          <div className={styles.eyebrow}>— SENSITIVE CASE TRACKER · REPORTER VIEW</div>
-          <h1 className={styles.title}>
-            {isHandoffDone
-              ? 'A safeguarded handoff has been documented.'
-              : 'The concern needs further follow-up.'}
-          </h1>
-          <p className={styles.subtitle}>
-            {isHandoffDone
-              ? 'The fictional coordinator has recorded the next stage of statutory support. Active follow-up responsibilities remain visible.'
-              : 'Your report is held within the protected demonstration boundary. Fictional child coordinators are arranging appropriate statutory referral.'}
-          </p>
+          <div className={styles.modeCardsGroup}>
+            {/* Active Mode: For you */}
+            <div className={styles.modeCardActive}>
+              <div className={styles.modeIconCircle}>
+                <User size={18} />
+              </div>
+              <div className={styles.modeTextCol}>
+                <span className={styles.modeTitle}>For you</span>
+                <span className={styles.modeSubtitle}>A simple, reassuring update</span>
+              </div>
+            </div>
+
+            {/* Clickable Mode: For coordinators */}
+            <button
+              type="button"
+              className={styles.modeCardCoord}
+              onClick={() => toggleCoordinatorDemoMode(true)}
+              aria-label="Switch to coordinator simulation mode"
+            >
+              <div className={styles.modeIconCircle}>
+                <Users size={18} />
+              </div>
+              <div className={styles.modeTextCol}>
+                <span className={styles.modeTitle}>For coordinators</span>
+                <span className={styles.modeSubtitle}>Detailed follow-up information</span>
+              </div>
+            </button>
+          </div>
         </div>
 
-        <div className={styles.layoutGrid}>
-          {/* Left Column: Reporter Milestones Timeline */}
-          <div className={styles.timelineCard}>
-            <div className={styles.caseIdHeader}>
-              <div className={styles.caseIdWrap}>
-                <span className={styles.caseIdLabel}>Fictional Case Reference</span>
-                <span className={styles.caseIdVal}>{childSafeCase?.id || 'UJAAS-CS-2018-001'}</span>
+        {/* 3-Column Editorial Grid matching Reference 04 */}
+        <div className={styles.mainGrid}>
+          {/* Left Column: Headline + Child Portrait Arch */}
+          <div className={styles.leftEditorialCol}>
+            <h1 className={styles.grandHeadline}>
+              The next chapter is <span className={styles.highlight}>within reach.</span>
+            </h1>
+
+            <p className={styles.leadNarrative}>
+              Your report has been recorded. Our network is coordinating support, and follow-up is
+              in progress. Thank you for showing up.
+            </p>
+
+            <div className={styles.childArchCard}>
+              <div className={styles.archBackground} aria-hidden="true" />
+
+              <div className={styles.portraitWrapper}>
+                <img
+                  src={getAssetUrl('/images/child-with-doll.png')}
+                  alt="Young child with cloth doll in warm sunlight"
+                  className={styles.portraitImg}
+                  width={360}
+                  height={420}
+                />
               </div>
 
-              <div
-                className={`${styles.statusBadge} ${
-                  isHandoffDone ? styles.statusBadgeGreen : ''
-                }`}
-              >
-                <Lock size={13} />
-                <span>
-                  {isHandoffDone
-                    ? 'Safe Handoff Documented'
-                    : isAckDone
-                    ? 'Referral Acknowledged in Demo'
-                    : isReferralDone
-                    ? 'Referral Prepared in Demo'
-                    : isReviewDone
-                    ? 'Review in Progress'
-                    : 'Recorded Locally'}
+              <span className={styles.illustrativeCaption}>
+                Illustrative depiction: not the reported child
+              </span>
+            </div>
+          </div>
+
+          {/* Center Column: Main Case Status Card matching Reference 04 */}
+          <div className={styles.centerStatusCard}>
+            <div className={styles.activeStatusRow}>
+              <span className={styles.activeDotPill}>
+                <span className={styles.greenDot} />
+                <span>Active</span>
+              </span>
+            </div>
+
+            <div>
+              <h2 className={styles.centerCardHeading}>
+                Your report has been recorded.{' '}
+                <span className={styles.highlight}>Support is being coordinated.</span>
+              </h2>
+
+              <p className={styles.centerCardDesc} style={{ marginTop: '0.65rem' }}>
+                This is a simulated case for demonstration purposes. UJAAS is showing how support
+                moves from concern to care through a safe and coordinated process.
+              </p>
+            </div>
+
+            {/* 2x2 Milestones Grid matching Reference 04 */}
+            <div className={styles.milestonesGrid}>
+              {/* Milestone 1: Case recorded */}
+              <div className={styles.milestoneCard}>
+                <div className={styles.milestoneIconRow}>
+                  <div className={`${styles.milestoneIconWrap} ${styles.iconGreen}`}>
+                    <Check size={18} strokeWidth={3} />
+                  </div>
+                </div>
+                <h3 className={styles.milestoneTitle}>Case recorded</h3>
+                <p className={styles.milestoneDesc}>
+                  Your information has been securely received in the demo system.
+                </p>
+                <span className={styles.milestoneTimestamp}>24 Apr 2018, 10:32 AM</span>
+              </div>
+
+              {/* Milestone 2: Referral acknowledged */}
+              <div className={styles.milestoneCard}>
+                <div className={styles.milestoneIconRow}>
+                  <div className={`${styles.milestoneIconWrap} ${styles.iconPeach}`}>
+                    <Users size={18} />
+                  </div>
+                </div>
+                <h3 className={styles.milestoneTitle}>Referral acknowledged in demo</h3>
+                <p className={styles.milestoneDesc}>
+                  The case has been routed to the appropriate child safety team (demo).
+                </p>
+                <span className={styles.milestoneTimestamp}>24 Apr 2018, 10:35 AM</span>
+              </div>
+
+              {/* Milestone 3: Temporary support in review */}
+              <div className={styles.milestoneCard}>
+                <div className={styles.milestoneIconRow}>
+                  <div className={`${styles.milestoneIconWrap} ${styles.iconBlue}`}>
+                    <Clock size={18} />
+                  </div>
+                </div>
+                <h3 className={styles.milestoneTitle}>Temporary support in review</h3>
+                <p className={styles.milestoneDesc}>
+                  Interim support options are being assessed for the child (demo).
+                </p>
+                <span className={styles.milestoneTimestamp}>24 Apr 2018, 11:10 AM</span>
+              </div>
+
+              {/* Milestone 4: Next follow-up scheduled */}
+              <div className={styles.milestoneCard}>
+                <div className={styles.milestoneIconRow}>
+                  <div className={`${styles.milestoneIconWrap} ${styles.iconPurple}`}>
+                    <Calendar size={18} />
+                  </div>
+                </div>
+                <h3 className={styles.milestoneTitle}>Next follow-up scheduled</h3>
+                <p className={styles.milestoneDesc}>
+                  A follow-up check-in is planned to monitor progress (demo).
+                </p>
+                <span className={styles.milestoneTimestamp}>25 Apr 2018, 10:00 AM</span>
+              </div>
+            </div>
+
+            {/* Privacy Protection Banner matching Reference 04 */}
+            <div className={styles.privacyNoticeBanner}>
+              <div className={styles.lockIconCircle}>
+                <Lock size={16} />
+              </div>
+              <div className={styles.privacyTextWrap}>
+                <span className={styles.privacyTitle}>
+                  The child's identity and sensitive information are protected.
+                </span>
+                <span className={styles.privacyDesc}>
+                  Only authorised child protection professionals and trusted organisations can
+                  access case details on a need-to-know basis.
                 </span>
               </div>
             </div>
 
-            <div className={styles.timelineTrack}>
-              {/* Stage 1: Concern Recorded */}
-              <div className={styles.timelineItem}>
-                <div className={`${styles.iconCircle} ${styles.iconDone}`}>
-                  <Check size={18} strokeWidth={3} />
-                </div>
-                <div
-                  className={`${styles.connectorLine} ${
-                    isReviewDone ? styles.connectorLineDone : ''
-                  }`}
-                />
-                <div className={styles.itemContent}>
-                  <div className={styles.itemHeader}>
-                    <span className={styles.itemName}>1. Concern Recorded Locally</span>
-                    <span className={styles.itemTime}>April 24, 2018, 14:30 IST</span>
-                  </div>
-                  <p className={styles.itemDesc}>
-                    Factual observation recorded for an unattended child holding a doll near 100ft Road Bus Stop, Indiranagar.
-                  </p>
-                </div>
-              </div>
+            {/* Action Buttons Row matching Reference 04 */}
+            <div className={styles.actionsRow}>
+              <button
+                type="button"
+                className={styles.returnCircleBtn}
+                onClick={() => navigateTo('my_circle')}
+                aria-label="Return to My Circle"
+              >
+                <span>Return to My Circle</span>
+                <ArrowRight size={16} />
+              </button>
 
-              {/* Stage 2: Specialist Review */}
-              <div className={styles.timelineItem}>
-                <div
-                  className={`${styles.iconCircle} ${
-                    isReviewDone
-                      ? styles.iconDone
-                      : currentStatus === 'recorded_local'
-                      ? styles.iconActive
-                      : styles.iconPending
-                  }`}
-                >
-                  {isReviewDone ? <Check size={18} strokeWidth={3} /> : '2'}
-                </div>
-                <div
-                  className={`${styles.connectorLine} ${
-                    isReferralDone ? styles.connectorLineDone : ''
-                  }`}
-                />
-                <div className={styles.itemContent}>
-                  <div className={styles.itemHeader}>
-                    <span className={styles.itemName}>2. Specialist Review Initiated</span>
-                    <span className={styles.itemTime}>
-                      {isReviewDone ? 'April 24, 2018, 14:45 IST' : 'Awaiting review'}
-                    </span>
-                  </div>
-                  <p className={styles.itemDesc}>
-                    Designated UJAAS coordinator verified initial facts and ensured location coordinates remain restricted from public volunteer matching.
-                  </p>
-                </div>
-              </div>
-
-              {/* Stage 3: Referral Prepared */}
-              <div className={styles.timelineItem}>
-                <div
-                  className={`${styles.iconCircle} ${
-                    isReferralDone
-                      ? styles.iconDone
-                      : currentStatus === 'demo_review_in_progress'
-                      ? styles.iconActive
-                      : styles.iconPending
-                  }`}
-                >
-                  {isReferralDone ? <Check size={18} strokeWidth={3} /> : '3'}
-                </div>
-                <div
-                  className={`${styles.connectorLine} ${
-                    isAckDone ? styles.connectorLineDone : ''
-                  }`}
-                />
-                <div className={styles.itemContent}>
-                  <div className={styles.itemHeader}>
-                    <span className={styles.itemName}>3. Statutory Referral Prepared</span>
-                    <span className={styles.itemTime}>
-                      {isReferralDone ? 'April 24, 2018, 15:10 IST' : 'Pending'}
-                    </span>
-                  </div>
-                  <p className={styles.itemDesc}>
-                    Safeguarded briefing dossier prepared for District Child Welfare Committee (CWC) emergency intake.
-                  </p>
-                </div>
-              </div>
-
-              {/* Stage 4: Statutory Acknowledgement */}
-              <div className={styles.timelineItem}>
-                <div
-                  className={`${styles.iconCircle} ${
-                    isAckDone
-                      ? styles.iconDone
-                      : currentStatus === 'demo_referral_prepared'
-                      ? styles.iconActive
-                      : styles.iconPending
-                  }`}
-                >
-                  {isAckDone ? <Check size={18} strokeWidth={3} /> : '4'}
-                </div>
-                <div
-                  className={`${styles.connectorLine} ${
-                    isHandoffDone ? styles.connectorLineDone : ''
-                  }`}
-                />
-                <div className={styles.itemContent}>
-                  <div className={styles.itemHeader}>
-                    <span className={styles.itemName}>4. Statutory Referral Acknowledged</span>
-                    <span className={styles.itemTime}>
-                      {isAckDone ? 'April 24, 2018, 15:35 IST' : 'Pending'}
-                    </span>
-                  </div>
-                  <p className={styles.itemDesc}>
-                    Duty officer acknowledged intake under statutory emergency protocol and dispatched protection staff.
-                  </p>
-                </div>
-              </div>
-
-              {/* Stage 5: Safe Handoff Documented */}
-              <div className={styles.timelineItem}>
-                <div
-                  className={`${styles.iconCircle} ${
-                    isHandoffDone ? styles.iconDone : styles.iconPending
-                  }`}
-                >
-                  {isHandoffDone ? <Check size={18} strokeWidth={3} /> : '5'}
-                </div>
-                <div className={styles.itemContent}>
-                  <div className={styles.itemHeader}>
-                    <span className={styles.itemName}>5. Authorised Safe Handoff</span>
-                    <span className={styles.itemTime}>
-                      {isHandoffDone ? 'April 24, 2018, 16:15 IST' : 'Pending'}
-                    </span>
-                  </div>
-                  <p className={styles.itemDesc}>
-                    Physical care responsibly transferred to designated Child Welfare Protection Officer.
-                  </p>
-                </div>
-              </div>
+              <button
+                type="button"
+                className={styles.viewSummaryBtn}
+                onClick={() => setShowSummaryModal(true)}
+                aria-label="View case summary"
+              >
+                <span>View case summary</span>
+                <ArrowRight size={14} />
+              </button>
             </div>
-
-            {/* Active Follow-up Responsibilities Card */}
-            {childSafeCase?.followUpState?.isOpen && (
-              <div className={styles.followUpCard}>
-                <div className={styles.followUpHeader}>
-                  <AlertTriangle size={18} />
-                  <span>Follow-Up Responsibility Active</span>
-                </div>
-                <p className={styles.followUpText}>
-                  <strong>Action in progress:</strong> {childSafeCase.followUpState.requiredAction}
-                  <br />
-                  <strong>Target window:</strong> {childSafeCase.followUpState.targetDue}
-                </p>
-              </div>
-            )}
           </div>
 
-          {/* Right Column: Actions & Guidance */}
-          <div className={styles.rightCol}>
-            {/* Guidance Card */}
-            <div className={styles.sideCard}>
-              <div className={styles.sideCardTitle}>
-                <Shield size={18} color="#F45124" />
-                <span>What you can do next</span>
+          {/* Right Column: Care Journey Vertical Stepper matching Reference 04 */}
+          <div className={styles.careJourneyCard}>
+            <div className={styles.journeyHeader}>
+              <GitBranch size={20} className={styles.journeyHeaderIcon} />
+              <div>
+                <h3 className={styles.journeyTitleText}>Care journey</h3>
+                <p className={styles.journeySubText}>
+                  From concern to care, every step matters.
+                </p>
               </div>
-
-              <ul className={styles.sideList}>
-                <li className={styles.sideListItem}>
-                  <span className={styles.bullet} />
-                  <span>
-                    <strong>Save your reference code:</strong> Keep{' '}
-                    <code>{childSafeCase?.id || 'UJAAS-CS-2018-001'}</code> if calling external helplines.
-                  </span>
-                </li>
-
-                <li className={styles.sideListItem}>
-                  <span className={styles.bullet} />
-                  <span>
-                    <strong>Direct Emergency Contacts:</strong> Call <strong>1098</strong> (Childline India) or{' '}
-                    <strong>100</strong> (Bengaluru Police, 2018) if urgent on-ground escalation is needed. <em>(Present-day emergency notice: dial 112).</em>
-                  </span>
-                </li>
-
-                <li className={styles.sideListItem}>
-                  <span className={styles.bullet} />
-                  <span>
-                    <strong>Strict Privacy:</strong> Public map matching is completely disabled for this child.
-                  </span>
-                </li>
-              </ul>
-
-              <button
-                type="button"
-                className={styles.returnHelpBtn}
-                onClick={() => navigateTo('help_now_landing')}
-              >
-                <span>Return to Help Now</span>
-              </button>
             </div>
 
-            {/* Evaluator Simulation Control */}
-            <div className={styles.sideCard} style={{ backgroundColor: '#FAF7F0' }}>
-              <div className={styles.sideCardTitle}>
-                <UserCheck size={18} color="#102744" />
-                <span>Evaluator Simulation Shortcut</span>
+            <div className={styles.journeyStepsList}>
+              {/* Step 1: Concern identified */}
+              <div className={styles.journeyStepItem}>
+                <div className={`${styles.stepTrackLine} ${styles.stepTrackLineDone}`} />
+                <div className={`${styles.stepIconCircle} ${styles.stepDone}`}>
+                  <Check size={14} strokeWidth={3} />
+                </div>
+                <div className={styles.stepContentCol}>
+                  <span className={styles.stepLabel}>1. Concern identified</span>
+                  <p className={styles.stepDesc}>You shared your observation.</p>
+                  <span className={styles.stepTimestamp}>24 Apr 2018, 10:32 AM</span>
+                </div>
               </div>
-              <p style={{ fontSize: '0.84rem', color: '#526072', lineHeight: '1.5' }}>
-                Toggle into the restricted Coordinator Simulation to review internal case notes, prepare referrals, and document statutory handoffs.
-              </p>
-              <button
-                type="button"
-                className={styles.coordSwitchBtn}
-                onClick={() => toggleCoordinatorDemoMode(true)}
-              >
-                <span>Enter coordinator demo mode →</span>
-              </button>
+
+              {/* Step 2: Case recorded */}
+              <div className={styles.journeyStepItem}>
+                <div className={`${styles.stepTrackLine} ${styles.stepTrackLineDone}`} />
+                <div className={`${styles.stepIconCircle} ${styles.stepDone}`}>
+                  <Check size={14} strokeWidth={3} />
+                </div>
+                <div className={styles.stepContentCol}>
+                  <span className={styles.stepLabel}>2. Case recorded</span>
+                  <p className={styles.stepDesc}>Your report was securely received.</p>
+                  <span className={styles.stepTimestamp}>24 Apr 2018, 10:32 AM</span>
+                </div>
+              </div>
+
+              {/* Step 3: Referral acknowledged */}
+              <div className={styles.journeyStepItem}>
+                <div className={`${styles.stepTrackLine} ${styles.stepTrackLineDone}`} />
+                <div className={`${styles.stepIconCircle} ${styles.stepDone}`}>
+                  <Check size={14} strokeWidth={3} />
+                </div>
+                <div className={styles.stepContentCol}>
+                  <span className={styles.stepLabel}>3. Referral acknowledged</span>
+                  <p className={styles.stepDesc}>Routed to the right team (demo).</p>
+                  <span className={styles.stepTimestamp}>24 Apr 2018, 10:35 AM</span>
+                </div>
+              </div>
+
+              {/* Step 4: Support in progress (Active) */}
+              <div className={styles.journeyStepItem}>
+                <div className={styles.stepTrackLine} />
+                <div className={`${styles.stepIconCircle} ${styles.stepActivePulse}`}>
+                  <Clock size={13} />
+                </div>
+                <div className={styles.stepContentCol}>
+                  <span className={styles.stepLabel} style={{ color: '#F45124' }}>
+                    4. Support in progress
+                  </span>
+                  <p className={styles.stepDesc}>
+                    Temporary support options are being reviewed (demo).
+                  </p>
+                  <span className={styles.stepTimestamp}>24 Apr 2018, 11:10 AM</span>
+                </div>
+              </div>
+
+              {/* Step 5: Follow-up check-in (Pending) */}
+              <div className={styles.journeyStepItem}>
+                <div className={styles.stepTrackLine} />
+                <div className={`${styles.stepIconCircle} ${styles.stepPending}`}>
+                  <Calendar size={13} />
+                </div>
+                <div className={styles.stepContentCol}>
+                  <span className={styles.stepLabel} style={{ color: '#64748B' }}>
+                    5. Follow-up check-in
+                  </span>
+                  <p className={styles.stepDesc}>Next check-in scheduled.</p>
+                  <span className={styles.stepTimestamp}>25 Apr 2018, 10:00 AM</span>
+                </div>
+              </div>
+
+              {/* Step 6: Care confirmed (Pending) */}
+              <div className={styles.journeyStepItem}>
+                <div className={`${styles.stepIconCircle} ${styles.stepPending}`}>
+                  <Check size={13} />
+                </div>
+                <div className={styles.stepContentCol}>
+                  <span className={styles.stepLabel} style={{ color: '#64748B' }}>
+                    6. Care confirmed
+                  </span>
+                  <p className={styles.stepDesc}>
+                    Support outcomes will be confirmed and shared (demo).
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Safe Case Summary Modal */}
+        {showSummaryModal && (
+          <div className={styles.modalOverlay}>
+            <div className={styles.modalCard}>
+              <div className={styles.modalHeader}>
+                <h2 className={styles.modalTitle}>Reported Case Summary</h2>
+                <button
+                  type="button"
+                  className={styles.closeBtn}
+                  onClick={() => setShowSummaryModal(false)}
+                  aria-label="Close summary modal"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              <div className={styles.summaryRow}>
+                <span className={styles.summaryRowLabel}>Case ID</span>
+                <span className={styles.summaryRowVal}>{caseId}</span>
+              </div>
+
+              <div className={styles.summaryRow}>
+                <span className={styles.summaryRowLabel}>Reported By</span>
+                <span className={styles.summaryRowVal}>{reporterName}</span>
+              </div>
+
+              <div className={styles.summaryRow}>
+                <span className={styles.summaryRowLabel}>Location</span>
+                <span className={styles.summaryRowVal}>{area}</span>
+              </div>
+
+              <div className={styles.summaryRow}>
+                <span className={styles.summaryRowLabel}>Observed Child</span>
+                <span className={styles.summaryRowVal}>Young child (approx 4-6 years)</span>
+              </div>
+
+              <div className={styles.summaryRow}>
+                <span className={styles.summaryRowLabel}>Caregiver Present</span>
+                <span className={styles.summaryRowVal}>No visible caregiver</span>
+              </div>
+
+              <div className={styles.summaryRow}>
+                <span className={styles.summaryRowLabel}>Current Status</span>
+                <span className={styles.summaryRowVal} style={{ color: '#166534' }}>
+                  Support Being Coordinated
+                </span>
+              </div>
+
+              <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.75rem' }}>
+                <button
+                  type="button"
+                  className={styles.returnCircleBtn}
+                  onClick={() => setShowSummaryModal(false)}
+                >
+                  Done
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

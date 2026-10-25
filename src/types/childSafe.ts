@@ -75,6 +75,53 @@ export interface ChildHandoffRecord {
   followUpNote?: string;
 }
 
+export type NeedAssessmentAnswer = 'yes' | 'no' | 'not_sure';
+
+export type NeedStatus =
+  | 'not_addressed'
+  | 'needs_assessment'
+  | 'pending'
+  | 'not_confirmed'
+  | 'under_review'
+  | 'in_place'
+  | 'support_coordinated'
+  | 'addressed_in_demo';
+
+export interface ImmediateNeedsAssessment {
+  supervision: NeedAssessmentAnswer;
+  supervisionStatus: NeedStatus;
+  foodAndWater: NeedAssessmentAnswer;
+  foodStatus: NeedStatus;
+  medicalAttention: NeedAssessmentAnswer;
+  medicalStatus: NeedStatus;
+  safeTemporaryShelter: NeedAssessmentAnswer;
+  shelterStatus: NeedStatus;
+}
+
+export interface CareArrangementRecord {
+  status: 'not_assessed' | 'under_professional_review' | 'in_place' | 'follow_up_required';
+  placementName: string;
+  notes: string;
+  updatedAt: string;
+}
+
+export interface AssignedCoordinatorRecord {
+  id: string;
+  name: string;
+  role: string;
+  phone: string;
+  email: string;
+  badge: string;
+}
+
+export interface ReferralItemRecord {
+  id: string;
+  serviceName: string;
+  status: 'acknowledged' | 'in_progress' | 'pending' | 'not_yet_referred';
+  date: string;
+  notes?: string;
+}
+
 export interface ChildSafeguardingCase {
   id: string; // Stable canonical: "UJAAS-CS-2018-001"
   caseReference: string; // "UJAAS-CS-2018-001"
@@ -97,6 +144,16 @@ export interface ChildSafeguardingCase {
   status: ChildCaseStatus;
   createdAt: string; // "April 24, 2018, 14:30 IST"
   updatedAt: string;
+
+  // Child Care Continuity Extensions (Phase 07)
+  childName?: string; // Optional, "Not known" or child's first name
+  observedDateTime?: string; // e.g. "April 24, 2018, 14:00 IST"
+  caregiverPresent?: 'yes' | 'no' | 'not_sure';
+  immediateNeeds?: ImmediateNeedsAssessment;
+  careArrangement?: CareArrangementRecord;
+  assignedCoordinator?: AssignedCoordinatorRecord;
+  nextReviewDue?: string; // e.g. "April 26, 2018"
+  referralsList?: ReferralItemRecord[];
 
   // Coordinator Simulation & Safeguarded Boundary
   fictionalCoordinatorId?: string;

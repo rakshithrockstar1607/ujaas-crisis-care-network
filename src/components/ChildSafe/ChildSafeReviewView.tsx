@@ -1,316 +1,283 @@
 import React, { useState } from 'react';
 import {
-  Baby,
-  MapPin,
   FileText,
-  UserCheck,
-  Check,
   Edit2,
+  MapPin,
+  User,
+  AlertTriangle,
   ArrowRight,
-  ArrowLeft,
-  Shield,
-  Lock,
-  PhoneCall
+  Shield
 } from 'lucide-react';
 import { useCareContext } from '../../context/CareContext';
 import { useAccountContext } from '../../context/AccountContext';
+import { getAssetUrl } from '../../utils/assets';
 import styles from './ChildSafeReviewView.module.css';
 
 export const ChildSafeReviewView: React.FC = () => {
-  const { childSafeDraft, submitChildSafeCase, navigateTo, goBack } = useCareContext();
+  const { childSafeDraft, submitChildSafeCase, navigateTo } = useCareContext();
   const { activeUser } = useAccountContext();
-
-  const [confirmedAccuracy, setConfirmedAccuracy] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const stableCaseId = 'UJAAS-CS-2018-001';
 
   const handleEdit = () => {
     navigateTo('child_safe_observation');
   };
 
-  const handleRecord = () => {
-    if (!confirmedAccuracy || isSubmitting) return;
+  const handleCreateCase = () => {
+    if (isSubmitting) return;
     setIsSubmitting(true);
     submitChildSafeCase();
+    navigateTo('child_safe_recorded');
   };
+
+  // Immediate Needs Summary String
+  const needs = childSafeDraft?.immediateNeeds;
+  const needsSummaryList: string[] = [];
+  if (needs?.supervision === 'yes') needsSummaryList.push('Adult supervision needed');
+  if (needs?.foodAndWater === 'yes') needsSummaryList.push('Food and drinking water needed');
+  if (needs?.safeTemporaryShelter === 'yes') needsSummaryList.push('Safe temporary shelter needed');
+  if (needs?.medicalAttention === 'yes') needsSummaryList.push('Medical attention required');
+  else if (needs?.medicalAttention === 'not_sure') needsSummaryList.push('Medical check recommended (condition unconfirmed)');
+
+  const reporterDisplayName = activeUser
+    ? `${activeUser.firstName} ${activeUser.lastName || ''}`.trim()
+    : 'Aarav Sharma';
+  const reporterPhone = activeUser?.phone || '+91 98450 23891';
+  const reporterEmail = activeUser?.email || 'aarav.sharma@example.com';
 
   return (
     <div className={styles.container}>
-      <div className={styles.contentWrap}>
-        {/* Stepper Bar */}
-        <div className={styles.stepperBar} aria-label="Step indicator">
-          <span className={`${styles.stepPill} ${styles.stepPillDone}`}>
-            <Check size={12} strokeWidth={3} />
-            <span>Step 1: Observation</span>
-          </span>
-          <div className={styles.stepperDivider} />
-          <span className={`${styles.stepPill} ${styles.stepPillActive}`}>
-            Step 2: Review & Record
-          </span>
-        </div>
+      <div className={styles.ambientGlow} aria-hidden="true" />
 
-        {/* Header */}
-        <div className={styles.header}>
-          <div className={styles.eyebrow}>— REVIEW & ACCURACY CHECK</div>
-          <h1 className={styles.title}>Review the concern carefully.</h1>
-          <p className={styles.subtitle}>
-            Check that your report reflects what you observed. You can make changes before saving
-            it. This record is held within the safeguarded case simulation.
+      <div className={styles.contentWrap}>
+        {/* Editorial Heading */}
+        <div className={styles.pageHeader}>
+          <div className={styles.eyebrowRow}>
+            <span className={styles.eyebrowDash} aria-hidden="true" />
+            <span className={styles.eyebrowText}>CHILD SAFE</span>
+          </div>
+
+          <h1 className={styles.grandHeading}>
+            Review and <span className={styles.highlight}>create case.</span>
+          </h1>
+
+          <p className={styles.leadNarrative}>
+            Please review the details below. Once you create the case, UJAAS will securely route
+            it to the right team for follow-up.
           </p>
         </div>
 
+        {/* Two-Column Grid matching Reference 02 */}
         <div className={styles.reviewGrid}>
-          {/* Left Column: Quick Case Overview Card */}
-          <div className={styles.overviewCard}>
-            <div className={styles.overviewHeader}>
-              <div className={styles.overviewIconWrap}>
-                <Baby size={22} />
+          {/* Left Column: Summary of your report */}
+          <div className={styles.leftCol}>
+            <div className={styles.summaryCard}>
+              <div className={styles.summaryCardHeader}>
+                <h2 className={styles.summaryCardTitle}>Summary of your report</h2>
+                <button
+                  type="button"
+                  className={styles.editDetailsBtn}
+                  onClick={handleEdit}
+                  aria-label="Edit report details"
+                >
+                  <Edit2 size={14} />
+                  <span>Edit details</span>
+                </button>
               </div>
-              <div>
-                <span className={styles.overviewTitle}>Child Safe Case</span>
-                <div className={styles.statusBadgeDraft}>Draft · Awaiting Record</div>
+
+              <div className={styles.summaryCardBody}>
+                {/* Child Portrait Thumbnail */}
+                <div className={styles.thumbnailWrap}>
+                  <div className={styles.thumbnailFrame}>
+                    <img
+                      src={getAssetUrl('/images/child-with-doll.png')}
+                      alt="Illustrative depiction: not the reported child"
+                      className={styles.thumbnailImg}
+                      width={160}
+                      height={200}
+                    />
+                  </div>
+                  <span className={styles.thumbnailCaption}>
+                    Illustrative image, not the reported child
+                  </span>
+                </div>
+
+                {/* Information Rows */}
+                <div className={styles.infoRows}>
+                  {/* Row 1: Observed Child */}
+                  <div className={styles.infoRow}>
+                    <div className={styles.infoIconWrap}>
+                      <User size={18} />
+                    </div>
+                    <div className={styles.infoContent}>
+                      <h3 className={styles.infoLabel}>Observed child</h3>
+                      <p className={styles.infoPrimary}>
+                        {childSafeDraft?.childName && childSafeDraft.childName !== 'Not known'
+                          ? childSafeDraft.childName
+                          : 'Child without known name'}
+                        {' · '}
+                        {childSafeDraft?.observedAgeGroup === 'young_child'
+                          ? 'Approximately 4-6 years old'
+                          : childSafeDraft?.observedAgeGroup || 'Age unknown'}
+                      </p>
+                      <p className={styles.infoSecondary}>
+                        {childSafeDraft?.caregiverPresent === 'no'
+                          ? 'Appears to be alone and without an available caregiver.'
+                          : 'Caregiver presence uncertain.'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Row 2: Location */}
+                  <div className={styles.infoRow}>
+                    <div className={styles.infoIconWrap}>
+                      <MapPin size={18} />
+                    </div>
+                    <div className={styles.infoContent}>
+                      <h3 className={styles.infoLabel}>Location</h3>
+                      <p className={styles.infoPrimary}>
+                        {childSafeDraft?.landmark || 'Near 100ft Road Bus Stop, 4th Cross'}
+                      </p>
+                      <p className={styles.infoSecondary}>
+                        {childSafeDraft?.neighbourhood || 'Indiranagar'}, {childSafeDraft?.city || 'Bengaluru'}, Karnataka
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Row 3: Immediate Needs Summary */}
+                  <div className={styles.infoRow}>
+                    <div className={styles.infoIconWrap}>
+                      <FileText size={18} />
+                    </div>
+                    <div className={styles.infoContent}>
+                      <h3 className={styles.infoLabel}>Immediate needs summary</h3>
+                      <p className={styles.infoPrimary}>
+                        {needsSummaryList.length > 0
+                          ? needsSummaryList.join('. ') + '.'
+                          : 'Basic food, temporary shelter and supervision check requested.'}
+                      </p>
+                      <p className={styles.infoSecondary}>
+                        Factual observation recorded. No commercial volunteer matching permitted.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Row 4: Reporter Details */}
+                  <div className={styles.infoRow}>
+                    <div className={styles.infoIconWrap}>
+                      <Shield size={18} />
+                    </div>
+                    <div className={styles.infoContent}>
+                      <h3 className={styles.infoLabel}>Reporter details</h3>
+                      <p className={styles.infoPrimary}>{reporterDisplayName}</p>
+                      <p className={styles.infoSecondary}>
+                        {reporterPhone} · {reporterEmail}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-
-            <div className={styles.overviewMetaRow}>
-              <span className={styles.overviewMetaLabel}>Concern Type</span>
-              <span className={styles.overviewMetaValue}>
-                Child without an available caregiver
-              </span>
-            </div>
-
-            <div className={styles.overviewMetaRow}>
-              <span className={styles.overviewMetaLabel}>Approximate Area</span>
-              <span className={styles.overviewMetaValue}>
-                {childSafeDraft?.neighbourhood || 'Indiranagar'}, {childSafeDraft?.city || 'Bengaluru'}
-              </span>
-            </div>
-
-            <div className={styles.overviewMetaRow}>
-              <span className={styles.overviewMetaLabel}>Estimated Age Group</span>
-              <span className={styles.overviewMetaValue}>
-                Young child (4–6 years)
-              </span>
-            </div>
-
-            <div className={styles.overviewMetaRow}>
-              <span className={styles.overviewMetaLabel}>Reporter</span>
-              <span className={styles.overviewMetaValue}>
-                {activeUser ? `${activeUser.firstName} ${activeUser.lastName || ''}`.trim() : 'Aarav Sharma'}
-              </span>
-            </div>
-
-            <div className={styles.simBadge}>
-              <strong>Notice:</strong> This is a local demonstration record. No real external statutory authorities will be dispatched.
             </div>
           </div>
 
-          {/* Center Column: Detailed Sections with Functional Edit buttons */}
-          <div className={styles.centerCol}>
-            {/* Section 1: Situation Summary */}
-            <div className={styles.sectionCard}>
-              <div className={styles.sectionHeader}>
-                <div className={styles.sectionHeading}>
-                  <FileText size={18} color="#F45124" />
-                  <span>1. Situation Summary</span>
-                </div>
-                <button
-                  type="button"
-                  className={styles.editBtn}
-                  onClick={handleEdit}
-                  aria-label="Edit situation summary"
-                >
-                  <Edit2 size={13} />
-                  <span>Edit</span>
-                </button>
-              </div>
-              <p className={styles.sectionBodyText}>
-                {childSafeDraft?.factualObservations ||
-                  'I noticed a young child (approx 4–6 years old) alone near the bus stop holding a doll. I waited nearby for 30 minutes, but no familiar caregiver or adult was visibly present. The child appears awake, alert, and responsive, but quiet.'}
-              </p>
-            </div>
-
-            {/* Section 2: Location and Context */}
-            <div className={styles.sectionCard}>
-              <div className={styles.sectionHeader}>
-                <div className={styles.sectionHeading}>
-                  <MapPin size={18} color="#F45124" />
-                  <span>2. Location and Relevant Context</span>
-                </div>
-                <button
-                  type="button"
-                  className={styles.editBtn}
-                  onClick={handleEdit}
-                  aria-label="Edit location"
-                >
-                  <Edit2 size={13} />
-                  <span>Edit</span>
-                </button>
-              </div>
-              <p className={styles.sectionBodyText}>
-                <strong>Neighbourhood:</strong> {childSafeDraft?.neighbourhood || 'Indiranagar'}, {childSafeDraft?.city || 'Bengaluru'}
-                <br />
-                <strong>Landmark:</strong> {childSafeDraft?.landmark || 'Near 100ft Road Bus Stop, 4th Cross'}
-              </p>
-              <div className={styles.badgeRow}>
-                <span className={styles.pillTag}>
-                  <Lock size={12} />
-                  <span>Restricted to Coordinator & Authorized Responders</span>
-                </span>
-              </div>
-            </div>
-
-            {/* Section 3: Current Observations */}
-            <div className={styles.sectionCard}>
-              <div className={styles.sectionHeader}>
-                <div className={styles.sectionHeading}>
-                  <UserCheck size={18} color="#F45124" />
-                  <span>3. Current Observations</span>
-                </div>
-                <button
-                  type="button"
-                  className={styles.editBtn}
-                  onClick={handleEdit}
-                  aria-label="Edit observations"
-                >
-                  <Edit2 size={13} />
-                  <span>Edit</span>
-                </button>
-              </div>
-              <p className={styles.sectionBodyText}>
-                <strong>Presence State:</strong> Child is currently in immediate safe presence of reporter.
-                <br />
-                <strong>Observed Condition:</strong> Appears awake, alert, and responsive.
-                <br />
-                <strong>External Contact:</strong> {childSafeDraft?.servicesContacted === 'contacted' ? 'Contact reported by user' : 'No external contact confirmed yet'}
-              </p>
-            </div>
-
-            {/* Section 4: Reporter Contact Preference */}
-            <div className={styles.sectionCard}>
-              <div className={styles.sectionHeader}>
-                <div className={styles.sectionHeading}>
-                  <PhoneCall size={18} color="#F45124" />
-                  <span>4. Reporter Contact & Follow-up</span>
-                </div>
-                <button
-                  type="button"
-                  className={styles.editBtn}
-                  onClick={handleEdit}
-                  aria-label="Edit contact preference"
-                >
-                  <Edit2 size={13} />
-                  <span>Edit</span>
-                </button>
-              </div>
-              <p className={styles.sectionBodyText}>
-                <strong>Name:</strong> {activeUser ? `${activeUser.firstName} ${activeUser.lastName || ''}`.trim() : 'Aarav Sharma'}
-                <br />
-                <strong>Contact Phone:</strong> {activeUser?.phone || '+91 98450 23891'}
-                <br />
-                <strong>Preferred Method:</strong> Phone call for urgent follow-up
-              </p>
-            </div>
-
-            {/* Section 5: Recommended Next Action */}
-            <div className={styles.sectionCard} style={{ backgroundColor: '#FAF7F0' }}>
-              <div className={styles.sectionHeader}>
-                <div className={styles.sectionHeading}>
-                  <Shield size={18} color="#102744" />
-                  <span>5. Recommended Next Action</span>
-                </div>
-              </div>
-              <p className={styles.sectionBodyText}>
-                Sensitive child-protection observations require statutory coordination under Child Welfare Committee guidelines. In this prototype, submitting records the case locally and prepares a simulated coordinator handoff workflow.
-              </p>
-            </div>
-
-            {/* Final Acknowledgement Checkbox */}
-            <div
-              className={styles.ackBox}
-              onClick={() => setConfirmedAccuracy(!confirmedAccuracy)}
-              role="checkbox"
-              aria-checked={confirmedAccuracy}
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  setConfirmedAccuracy(!confirmedAccuracy);
-                }
-              }}
-            >
-              <div
-                className={`${styles.ackCheck} ${
-                  confirmedAccuracy ? styles.ackCheckActive : ''
-                }`}
-              >
-                {confirmedAccuracy && <Check size={14} strokeWidth={3} />}
-              </div>
-              <label className={styles.ackLabel}>
-                I confirm that this report reflects my observations to the best of my knowledge.
-              </label>
-            </div>
-
-            {/* Action Buttons */}
-            <div className={styles.actionsBar}>
-              <button
-                type="button"
-                className={styles.backBtn}
-                onClick={() => goBack()}
-              >
-                <ArrowLeft size={16} />
-                <span>Back to Edit</span>
-              </button>
-
-              <button
-                type="button"
-                className={styles.recordBtn}
-                onClick={handleRecord}
-                disabled={!confirmedAccuracy || isSubmitting}
-              >
-                <span>Record concern in demo</span>
-                <ArrowRight size={18} />
-              </button>
-            </div>
-          </div>
-
-          {/* Right Column: What Happens Next */}
+          {/* Right Column: Case Creation Action & What Happens Next */}
           <div className={styles.rightCol}>
-            <div className={styles.nextStepsCard}>
-              <div className={styles.nextStepsTitle}>What happens next</div>
+            <div className={styles.creationCard}>
+              <div className={styles.caseCreationHeader}>
+                <div className={styles.caseIconCircle}>
+                  <FileText size={22} color="#F45124" />
+                </div>
+                <span className={styles.readyText}>Ready to create the case</span>
+                <span className={styles.caseIdLabel}>Case ID</span>
+                <span className={styles.caseIdValue}>{stableCaseId}</span>
+                <p className={styles.caseNotice}>
+                  A new child safety case will be created with the details you provided and
+                  securely shared with our safeguarding network.
+                </p>
+              </div>
 
-              <ol className={styles.nextStepList}>
-                <li className={styles.nextStepItem}>
-                  <span className={styles.nextStepNum}>1</span>
-                  <span>
-                    <strong className={styles.nextStepHighlight}>Concern recorded locally:</strong>{' '}
-                    The case is saved in browser memory with a stable reference ID (`UJAAS-CS-2018-001`).
-                  </span>
-                </li>
+              <div className={styles.cardDivider} />
 
-                <li className={styles.nextStepItem}>
-                  <span className={styles.nextStepNum}>2</span>
-                  <span>
-                    <strong className={styles.nextStepHighlight}>Restricted handling:</strong> No
-                    ordinary volunteer or community member can see this child on the map.
-                  </span>
-                </li>
+              {/* What Happens Next Stepper */}
+              <div className={styles.nextStepsSection}>
+                <h3 className={styles.nextStepsTitle}>What happens next?</h3>
 
-                <li className={styles.nextStepItem}>
-                  <span className={styles.nextStepNum}>3</span>
-                  <span>
-                    <strong className={styles.nextStepHighlight}>Simulated coordinator review:</strong>{' '}
-                    A fictional specialist reviews factual details and prepares a statutory referral.
-                  </span>
-                </li>
+                <div className={styles.stepsList}>
+                  <div className={styles.stepItem}>
+                    <div className={styles.stepNum}>1</div>
+                    <div className={styles.stepContent}>
+                      <h4 className={styles.stepHeading}>Immediate needs recorded</h4>
+                      <p className={styles.stepDesc}>
+                        Your observations will be securely saved in the system.
+                      </p>
+                    </div>
+                  </div>
 
-                <li className={styles.nextStepItem}>
-                  <span className={styles.nextStepNum}>4</span>
-                  <span>
-                    <strong className={styles.nextStepHighlight}>Follow-up tracking:</strong> You can
-                    review non-sensitive milestone updates anytime.
-                  </span>
-                </li>
-              </ol>
+                  <div className={styles.stepItem}>
+                    <div className={styles.stepNum}>2</div>
+                    <div className={styles.stepContent}>
+                      <h4 className={styles.stepHeading}>Simulated safeguarding referral prepared</h4>
+                      <p className={styles.stepDesc}>
+                        The case will be routed to trusted partner organisations and authorised coordinators.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={styles.stepItem}>
+                    <div className={styles.stepNum}>3</div>
+                    <div className={styles.stepContent}>
+                      <h4 className={styles.stepHeading}>Reporter-safe status enabled</h4>
+                      <p className={styles.stepDesc}>
+                        Your identity and contact details will be protected and shared only with relevant professionals.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={styles.stepItem}>
+                    <div className={styles.stepNum}>4</div>
+                    <div className={styles.stepContent}>
+                      <h4 className={styles.stepHeading}>Coordinator follow-up required</h4>
+                      <p className={styles.stepDesc}>
+                        A case coordinator will review the details and take appropriate action. You may receive a follow-up update where applicable.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Prototype Safety Notice */}
+              <div className={styles.protoNoticeBanner}>
+                <AlertTriangle size={18} className={styles.protoNoticeIcon} />
+                <p className={styles.protoNoticeText}>
+                  <strong>This is a fictional prototype for demonstration purposes only.</strong> UJAAS
+                  is not a live emergency network. If a child is in immediate danger, please call{' '}
+                  <strong>112</strong>. For child assistance guidance, call <strong>1098</strong>.
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className={styles.actionButtonsGroup}>
+                <button
+                  type="button"
+                  className={styles.createCaseBtn}
+                  onClick={handleCreateCase}
+                  disabled={isSubmitting}
+                  aria-label="Create child care case"
+                >
+                  <span>{isSubmitting ? 'Recording concern...' : 'Create case'}</span>
+                  <ArrowRight size={18} />
+                </button>
+
+                <button
+                  type="button"
+                  className={styles.editDetailsSecondaryBtn}
+                  onClick={handleEdit}
+                  aria-label="Edit details"
+                >
+                  <span>Edit details</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 /**
  * CHILD SAFE CANONICAL DEMO DATA
- * UJAAS Crisis Care Network — Day 1 after the Snap (April 24, 2018)
+ * UJAAS Crisis Care Network: Day 1 after the Snap (April 24, 2018)
  *
  * Case ID: UJAAS-CS-2018-001
  * Reporter: Aarav Sharma (Indiranagar, Bengaluru)
@@ -9,6 +9,9 @@
 import { ChildSafeguardingCase, ReferralCategory } from '../types/childSafe';
 
 export const CANONICAL_CHILD_SAFE_DRAFT: Partial<ChildSafeguardingCase> = {
+  childName: 'Not known',
+  observedDateTime: 'April 24, 2018, 14:00 IST',
+  caregiverPresent: 'no',
   concernType: 'child_unattended',
   observedAgeGroup: 'young_child',
   city: 'Bengaluru',
@@ -16,17 +19,30 @@ export const CANONICAL_CHILD_SAFE_DRAFT: Partial<ChildSafeguardingCase> = {
   landmark: 'Near 100ft Road Bus Stop, 4th Cross',
   approximateArea: 'Indiranagar, Bengaluru',
   factualObservations:
-    'I noticed a young child (approx 4–6 years old) alone near the bus stop holding a doll. I waited nearby for 30 minutes, but no familiar caregiver or adult was visibly present. The child appears awake, alert, and responsive, but quiet.',
+    'I noticed a young child (approx 4-6 years old) alone near the bus stop holding a doll. I waited nearby for 30 minutes, but no familiar caregiver or adult was visibly present. The child appears awake, alert, and responsive, but quiet.',
   observedCondition: ['appears_responsive'],
   presenceState: 'with_reporter',
   servicesContacted: 'not_contacted',
   servicesContactedDetails: '',
-  contactPreference: 'phone'
+  contactPreference: 'phone',
+  immediateNeeds: {
+    supervision: 'yes',
+    supervisionStatus: 'not_addressed',
+    foodAndWater: 'yes',
+    foodStatus: 'pending',
+    medicalAttention: 'not_sure',
+    medicalStatus: 'not_confirmed',
+    safeTemporaryShelter: 'yes',
+    shelterStatus: 'under_review'
+  }
 };
 
 export const CANONICAL_RECORDED_CHILD_CASE: ChildSafeguardingCase = {
   id: 'UJAAS-CS-2018-001',
   caseReference: 'UJAAS-CS-2018-001',
+  childName: 'Not known',
+  observedDateTime: 'April 24, 2018, 14:00 IST',
+  caregiverPresent: 'no',
   reporterId: 'aarav',
   reporterName: 'Aarav Sharma',
   reporterRole: 'Community Volunteer · Indiranagar',
@@ -38,7 +54,7 @@ export const CANONICAL_RECORDED_CHILD_CASE: ChildSafeguardingCase = {
   landmark: 'Near 100ft Road Bus Stop, 4th Cross',
   approximateArea: 'Indiranagar, Bengaluru',
   factualObservations:
-    'I noticed a young child (approx 4–6 years old) alone near the bus stop holding a doll. I waited nearby for 30 minutes, but no familiar caregiver or adult was visibly present. The child appears awake, alert, and responsive, but quiet.',
+    'I noticed a young child (approx 4-6 years old) alone near the bus stop holding a doll. I waited nearby for 30 minutes, but no familiar caregiver or adult was visibly present. The child appears awake, alert, and responsive, but quiet.',
   observedCondition: ['appears_responsive'],
   presenceState: 'with_reporter',
   servicesContacted: 'not_contacted',
@@ -47,8 +63,63 @@ export const CANONICAL_RECORDED_CHILD_CASE: ChildSafeguardingCase = {
   status: 'recorded_local',
   createdAt: 'April 24, 2018, 14:30 IST',
   updatedAt: 'April 24, 2018, 14:30 IST',
-  fictionalCoordinatorId: 'coord-ujaas-01',
-  fictionalCoordinatorName: 'UJAAS Demonstration Coordinator',
+  fictionalCoordinatorId: 'coord-priya-01',
+  fictionalCoordinatorName: 'Priya Sharma',
+  assignedCoordinator: {
+    id: 'coord-priya-01',
+    name: 'Priya Sharma',
+    role: 'Child Protection Officer (Simulated)',
+    phone: '+91 98765 43210',
+    email: 'priya.sharma@ujaas.org',
+    badge: 'Designated Officer'
+  },
+  nextReviewDue: 'April 26, 2018',
+  immediateNeeds: {
+    supervision: 'yes',
+    supervisionStatus: 'not_addressed',
+    foodAndWater: 'yes',
+    foodStatus: 'pending',
+    medicalAttention: 'not_sure',
+    medicalStatus: 'not_confirmed',
+    safeTemporaryShelter: 'yes',
+    shelterStatus: 'under_review'
+  },
+  careArrangement: {
+    status: 'under_professional_review',
+    placementName: 'UJAAS Partner Shelter, Indiranagar',
+    notes: 'Arranged on April 24, 2018 by Child Safety Team.',
+    updatedAt: 'April 24, 2018, 15:30 IST'
+  },
+  referralsList: [
+    {
+      id: 'ref-cwc',
+      serviceName: 'Child Welfare Committee',
+      status: 'acknowledged',
+      date: 'April 24, 2018',
+      notes: 'Statutory intake recorded'
+    },
+    {
+      id: 'ref-med',
+      serviceName: 'Medical Assessment',
+      status: 'in_progress',
+      date: 'April 24, 2018',
+      notes: 'Pediatric evaluation booked'
+    },
+    {
+      id: 'ref-counsel',
+      serviceName: 'Counselling Support',
+      status: 'pending',
+      date: 'April 25, 2018',
+      notes: 'Trauma support review'
+    },
+    {
+      id: 'ref-edu',
+      serviceName: 'Education Support',
+      status: 'not_yet_referred',
+      date: 'Pending review',
+      notes: 'Continuity review'
+    }
+  ],
   activityHistory: [
     {
       id: 'act-cs-01',
