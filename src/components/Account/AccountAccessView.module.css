@@ -1,0 +1,373 @@
+.wrapper {
+  min-height: calc(100vh - 84px);
+  background-color: var(--color-canvas, #FAF7F0);
+  padding: var(--page-top-padding-mobile) 1.25rem 80px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    padding: var(--page-top-padding) 24px 80px;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1160px;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1.5px solid #091C33;
+  box-shadow: 2px 2px 0px #091C33;
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #091C33;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.backBtn:hover {
+  background-color: #FAF7F0;
+  transform: translateY(-1px);
+}
+
+.emergencyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFF3EB;
+  border: 1.5px solid #F45124;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #F45124;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.emergencyBtn:hover {
+  background: #F45124;
+  color: #FFFFFF;
+}
+
+.header {
+  margin-bottom: 40px;
+  text-align: center;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #F45124;
+  margin-bottom: 12px;
+}
+
+.headline {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 3rem;
+  line-height: 1.15;
+  font-weight: 500;
+  color: #091C33;
+  margin: 0 0 14px 0;
+}
+
+.subtitle {
+  font-size: 1.12rem;
+  line-height: 1.55;
+  color: #4A5666;
+  margin: 0;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.accessCard {
+  background: #FFFFFF;
+  border: 1.5px solid #091C33;
+  box-shadow: 4px 5px 0px #091C33;
+  border-radius: 8px;
+  padding: 32px 26px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.accessCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 7px 0px #091C33;
+}
+
+.cardAarav {
+  background: #FFFDF9;
+  border: 2px solid #F45124;
+  box-shadow: 4px 6px 0px #F45124;
+}
+
+.cardBadge {
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  background: #091C33;
+  color: #FAF7F0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.badgeFeatured {
+  background: #F45124;
+  color: #FFFFFF;
+}
+
+.iconCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #FFF3EB;
+  border: 1.5px solid #FDCFBF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F45124;
+  margin-bottom: 20px;
+}
+
+.aaravAvatarRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.aaravAvatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #F45124;
+}
+
+.cardTitle {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #091C33;
+  margin: 0 0 6px 0;
+}
+
+.cardSub {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #F45124;
+}
+
+.cardDescription {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #556272;
+  margin: 0 0 24px 0;
+  flex-grow: 1;
+}
+
+.cardFeature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #287346;
+  background: #EAF4EE;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  border: 1px solid #C4E2CF;
+}
+
+.primaryActionBtn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #091C33;
+  color: #FFFFFF;
+  border: 1.5px solid #091C33;
+  box-shadow: 2px 3px 0px #091C33;
+  border-radius: 4px;
+  padding: 12px 18px;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.primaryActionBtn:hover {
+  background: #102744;
+  transform: translateY(-1px);
+}
+
+.aaravActionBtn {
+  background: #F45124;
+  border-color: #091C33;
+  color: #FFFFFF;
+  box-shadow: 2px 3px 0px #091C33;
+}
+
+.aaravActionBtn:hover {
+  background: #E03E13;
+}
+
+.savedList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.savedUserRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #FAF7F0;
+  border: 1px solid #D5CDC0;
+  border-radius: 4px;
+  padding: 8px 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.savedUserRow:hover {
+  background: #FFFFFF;
+  border-color: #091C33;
+  transform: translateX(2px);
+}
+
+.savedAvatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #091C33;
+}
+
+.savedMeta {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.savedName {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #091C33;
+}
+
+.savedLocation {
+  font-size: 0.75rem;
+  color: #6B7888;
+}
+
+.savedArrow {
+  color: #F45124;
+}
+
+.emptySaved {
+  background: #FAF7F0;
+  border: 1px dashed #D5CDC0;
+  border-radius: 4px;
+  padding: 18px 14px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.emptySaved p {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #4A5666;
+  margin: 0 0 4px 0;
+}
+
+.emptyHint {
+  font-size: 0.78rem;
+  color: #7A8796;
+}
+
+.secondaryActionBtn {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1.5px solid #091C33;
+  border-radius: 4px;
+  padding: 10px;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #091C33;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.secondaryActionBtn:hover {
+  background: #FAF7F0;
+}
+
+.footerNote {
+  display: flex;
+  justify-content: center;
+}
+
+.civicPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: #556272;
+  background: #FFFFFF;
+  border: 1px solid #D5CDC0;
+  border-radius: 20px;
+  padding: 6px 18px;
+}
+
+@media (max-width: 992px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .headline {
+    font-size: 2.2rem;
+  }
+}

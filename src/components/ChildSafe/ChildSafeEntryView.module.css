@@ -1,0 +1,468 @@
+.container {
+  min-height: calc(100vh - 84px);
+  background-color: #FAF7F0;
+  padding: var(--page-top-padding-mobile) 1.25rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: var(--page-top-padding) 2.5rem 5rem;
+  }
+}
+
+.ambientGlow {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(244, 81, 36, 0.07) 0%, rgba(250, 247, 240, 0) 70%);
+  pointer-events: none;
+}
+
+.contentWrap {
+  max-width: 1320px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Back Link */
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #526072;
+  margin-bottom: 2rem;
+  transition: color 0.15s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.backBtn:hover {
+  color: #102744;
+}
+
+/* Two Column Layout */
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+@media (min-width: 992px) {
+  .layoutGrid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3.5rem;
+  }
+}
+
+/* Left Column */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #F45124;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 2.75rem;
+  line-height: 1.15;
+  color: #102744;
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3.5rem;
+  }
+}
+
+.highlight {
+  color: #F45124;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #526072;
+  margin-bottom: 2.5rem;
+  max-width: 620px;
+}
+
+/* Emergency Banner Check */
+.emergencyQuestionBox {
+  background-color: #FFF9F1;
+  border: 1.5px solid #F6A53A;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.emergencyQHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.emergencyQIcon {
+  color: #F45124;
+  flex-shrink: 0;
+}
+
+.emergencyQTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #102744;
+}
+
+.emergencyOptions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.emergencyOptionBtn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #DDD8CE;
+  background-color: #FFFFFF;
+  color: #102744;
+  transition: all 0.15s ease;
+}
+
+.emergencyOptionBtn:hover {
+  border-color: #102744;
+}
+
+.emergencyOptionActive {
+  background-color: #102744;
+  color: #FFFFFF;
+  border-color: #102744;
+}
+
+.emergencyGuidanceNotice {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 1rem;
+  border-left: 3px solid #F45124;
+  font-size: 0.88rem;
+  color: #102744;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.emergencyCallRow {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.emergencyCallBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: #F45124;
+  color: #FFFFFF;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+/* Concern Selection Section */
+.concernSectionTitle {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #526072;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.concernStack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.concernCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background-color: #FFFFFF;
+  border: 1.5px solid #DDD8CE;
+  border-radius: 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.concernCard:hover {
+  border-color: #102744;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -6px rgba(16, 39, 68, 0.08);
+}
+
+.concernCardActive {
+  border-color: #F45124;
+  background-color: #FFF9F1;
+  box-shadow: 0 6px 20px -4px rgba(244, 81, 36, 0.12);
+}
+
+.concernIconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: #FAF7F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #102744;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+}
+
+.concernCardActive .concernIconWrap {
+  background-color: #F45124;
+  color: #FFFFFF;
+}
+
+.concernBody {
+  flex: 1;
+}
+
+.concernHeading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #102744;
+  margin-bottom: 0.25rem;
+}
+
+.concernDesc {
+  font-size: 0.88rem;
+  color: #526072;
+  line-height: 1.45;
+}
+
+.concernBadge {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  background-color: rgba(244, 81, 36, 0.1);
+  color: #F45124;
+  text-transform: uppercase;
+}
+
+.radioCircle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #DDD8CE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  transition: border-color 0.15s;
+}
+
+.concernCardActive .radioCircle {
+  border-color: #F45124;
+}
+
+.radioDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #F45124;
+}
+
+/* Actions Row */
+.actionRow {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #F45124;
+  color: #FFFFFF;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+.primaryCta:hover {
+  background-color: #E03E12;
+  transform: translateY(-1px);
+}
+
+.privacyHint {
+  font-size: 0.84rem;
+  color: #526072;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Right Column: Photographic Stage & Restricted Policy */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.photoFrame {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #DDD8CE;
+  background-color: #091C33;
+  box-shadow: 0 16px 40px -12px rgba(16, 39, 68, 0.16);
+}
+
+.photoImg {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .photoImg {
+    height: 280px;
+    object-position: center 20%;
+  }
+}
+
+.photoCaptionOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(180deg, rgba(9, 28, 51, 0) 0%, rgba(9, 28, 51, 0.85) 100%);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.photoCaptionText {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+.photoCivicTag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #F6A53A;
+  text-transform: uppercase;
+}
+
+/* Safeguarded Protocol Card */
+.policyCard {
+  background-color: #FFFFFF;
+  border: 1px solid #DDD8CE;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.policyTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #102744;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.policyList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.policyItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.86rem;
+  color: #526072;
+  line-height: 1.45;
+}
+
+.policyBullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #F45124;
+  margin-top: 0.45rem;
+  flex-shrink: 0;
+}
+
+.policyHighlight {
+  font-weight: 700;
+  color: #102744;
+}
+
+.statutoryNotice {
+  border-top: 1px solid #FAF7F0;
+  padding-top: 0.85rem;
+  font-size: 0.78rem;
+  color: #7A889B;
+  line-height: 1.45;
+}

@@ -1,0 +1,337 @@
+.splitPage {
+  display: flex;
+  margin-top: var(--header-height);
+  min-height: calc(100vh - var(--header-height));
+  background-color: #FAF7F0;
+  width: 100%;
+}
+
+/* Left Column: Humanist Editorial Photo */
+.leftCol {
+  width: 40%;
+  min-width: 420px;
+  max-width: 540px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 44px;
+  background-color: #091C33;
+}
+
+.photoBackground {
+  position: absolute;
+  inset: 0;
+  background-image: url('../../../public/images/onboarding-elder.png');
+  background-size: cover;
+  background-position: center top;
+  z-index: 1;
+}
+
+.photoOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 28, 51, 0.4) 0%,
+    rgba(9, 28, 51, 0.6) 50%,
+    rgba(9, 28, 51, 0.94) 100%
+  );
+  z-index: 2;
+}
+
+.leftContent {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 32px;
+}
+
+.leftEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #FFA57D;
+  text-transform: uppercase;
+}
+
+.quoteBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.leftHeadline {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 2.8rem;
+  line-height: 1.12;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.leftSubtext {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.leftFooter {
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.savitriAttribution {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.savitriAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #FFFFFF;
+}
+
+.savitriCaption {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.credoLine {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Right Column: Step Form Experience */
+.rightCol {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 36px 48px 60px;
+  overflow-y: auto;
+  background-color: #FAF7F0;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.topMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.metaBreadcrumb {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #F45124;
+  text-transform: uppercase;
+}
+
+.metaPrivacy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #287346;
+}
+
+.shieldIcon {
+  color: #287346;
+}
+
+/* Stepper Bar */
+.stepperWrap {
+  position: relative;
+  margin-bottom: 36px;
+  padding: 10px 0;
+}
+
+.stepperLine {
+  position: absolute;
+  top: 24px;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background-color: #DED6C7;
+  z-index: 1;
+}
+
+.stepsList {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.stepCircle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #FAF7F0;
+  border: 1.5px solid #A8B3C0;
+  color: #6B7888;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.stepLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #7A8796;
+}
+
+.stepPast .stepCircle {
+  background: #091C33;
+  border-color: #091C33;
+  color: #FFFFFF;
+}
+
+.stepPast .stepLabel {
+  color: #091C33;
+}
+
+.stepCurrent .stepCircle {
+  background: #F45124;
+  border-color: #F45124;
+  color: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(244, 81, 36, 0.2);
+}
+
+.stepCurrent .stepLabel {
+  color: #F45124;
+  font-weight: 700;
+}
+
+.stepContent {
+  flex-grow: 1;
+  margin-bottom: 32px;
+}
+
+/* Bottom Actions */
+.bottomNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  border-top: 1px solid #E5DDCF;
+  margin-top: auto;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #091C33;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.backBtn:hover {
+  background: #EFE8DA;
+}
+
+.centerNote {
+  font-size: 0.8rem;
+  color: #7A8796;
+}
+
+.forwardActions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.skipBtn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #556272;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.skipBtn:hover {
+  color: #091C33;
+}
+
+.continueBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #F45124;
+  border: 1.5px solid #091C33;
+  box-shadow: 2px 3px 0px #091C33;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.continueBtn:hover:not(:disabled) {
+  background: #E03E13;
+  transform: translateY(-1px);
+  box-shadow: 3px 4px 0px #091C33;
+}
+
+.continueBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+  .leftCol {
+    display: none;
+  }
+  .rightCol {
+    padding: 24px 20px 48px;
+  }
+}

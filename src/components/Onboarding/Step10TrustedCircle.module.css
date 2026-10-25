@@ -1,0 +1,281 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.headline {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 2.6rem;
+  line-height: 1.15;
+  font-weight: 500;
+  color: #091C33;
+  margin: 0 0 10px 0;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #4A5666;
+  margin: 0 0 24px 0;
+}
+
+.searchBarRow {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.searchInputWrap {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1.5px solid #091C33;
+  border-radius: 6px;
+  padding: 0 14px;
+}
+
+.searchIcon {
+  color: #6B7888;
+  margin-right: 8px;
+}
+
+.searchInput {
+  flex-grow: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 0;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  color: #091C33;
+  outline: none;
+}
+
+.addBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1.5px solid #091C33;
+  box-shadow: 2px 2px 0px #091C33;
+  border-radius: 6px;
+  padding: 0 18px;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #091C33;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.addBtn:hover {
+  background: #FAF7F0;
+  transform: translateY(-1px);
+}
+
+.contactsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.contactCard {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #FFFFFF;
+  border: 1.5px solid #D5CDC0;
+  border-radius: 8px;
+  padding: 14px 18px;
+  transition: all 0.15s ease;
+}
+
+.contactCard:hover {
+  border-color: #091C33;
+  box-shadow: 2px 3px 0px #091C33;
+}
+
+.contactAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #091C33;
+  flex-shrink: 0;
+}
+
+.contactMeta {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactName {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #091C33;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.contactRel {
+  font-size: 0.78rem;
+  color: #6B7888;
+  margin: 2px 0 0 0;
+}
+
+.toggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFFFFF;
+  border: 1px solid #A8B3C0;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #091C33;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.toggleBtn:hover {
+  border-color: #091C33;
+  background: #FAF7F0;
+}
+
+.toggleSelected {
+  background: #EAF4EE;
+  border-color: #287346;
+  color: #287346;
+  font-weight: 700;
+}
+
+.lockNotice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #EDF3F9;
+  border: 1px solid #C8D8E8;
+  border-radius: 6px;
+  padding: 14px 18px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #334A60;
+}
+
+.lockIcon {
+  color: #1E4E79;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+/* Add Manual Contact Modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: rgba(9, 28, 51, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modalContent {
+  width: 100%;
+  max-width: 440px;
+  background: #FFFFFF;
+  border: 1.5px solid #091C33;
+  box-shadow: 4px 6px 0px #091C33;
+  border-radius: 8px;
+  padding: 28px;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.modalTitle {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #091C33;
+  margin: 0;
+}
+
+.modalClose {
+  background: transparent;
+  border: none;
+  color: #091C33;
+  cursor: pointer;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.fieldLabel {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #091C33;
+}
+
+.modalInput {
+  background: #FAF7F0;
+  border: 1.5px solid #091C33;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.9rem;
+  color: #091C33;
+  outline: none;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.modalCancel {
+  background: #FFFFFF;
+  border: 1px solid #D5CDC0;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modalSubmit {
+  background: #F45124;
+  border: 1.5px solid #091C33;
+  box-shadow: 2px 2px 0px #091C33;
+  border-radius: 4px;
+  padding: 8px 18px;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .contactsGrid {
+    grid-template-columns: 1fr;
+  }
+}

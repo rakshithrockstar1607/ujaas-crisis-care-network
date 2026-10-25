@@ -1,0 +1,149 @@
+.loaderBackdrop {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  background-color: var(--color-bg-ivory);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.48s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: opacity;
+}
+
+.loaderBackdrop.exiting {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.centerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Logo Wrap */
+.logoWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: loaderEmerge 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
+}
+
+@keyframes loaderEmerge {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.emblemImage {
+  display: block;
+  width: auto;
+  height: 125px;
+  max-height: 22vh;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(9, 28, 51, 0.08));
+}
+
+@media (min-width: 768px) {
+  .emblemImage {
+    height: 145px;
+  }
+}
+
+/* Subtle Warm Ambient Flame Glow */
+.flameEmberHalo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 118, 44, 0.18) 0%, rgba(246, 165, 58, 0.08) 50%, transparent 75%);
+  filter: blur(25px);
+  pointer-events: none;
+  animation: pulseHalo 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseHalo {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Typography Wrap */
+.textWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 1;
+  transform: translateY(0);
+  animation: loaderTextEmerge 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.14s both;
+  will-change: opacity, transform;
+}
+
+@keyframes loaderTextEmerge {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wordmark {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-deep-navy);
+  line-height: 1;
+  margin: 0;
+}
+
+.descriptor {
+  font-family: var(--font-sans);
+  font-size: clamp(0.64rem, 1.1vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-action-orange);
+  margin: 0;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loaderBackdrop,
+  .logoWrap,
+  .textWrap,
+  .flameEmberHalo {
+    transition: none !important;
+    animation: none !important;
+  }
+}

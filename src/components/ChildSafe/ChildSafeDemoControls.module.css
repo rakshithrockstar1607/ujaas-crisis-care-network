@@ -1,0 +1,144 @@
+.toolbarWrap {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  font-family: var(--font-sans);
+}
+
+.triggerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #102744;
+  color: #FFFFFF;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  border: 1.5px solid #DDD8CE;
+  box-shadow: 0 10px 25px -5px rgba(9, 28, 51, 0.25);
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.triggerBtn:hover {
+  background-color: #091C33;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -6px rgba(9, 28, 51, 0.35);
+}
+
+.pillBadge {
+  background-color: #F45124;
+  color: #FFFFFF;
+  font-size: 0.68rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-weight: 800;
+}
+
+.popover {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  right: 0;
+  width: 320px;
+  background-color: #FFFFFF;
+  border: 1px solid #DDD8CE;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 20px 45px -10px rgba(9, 28, 51, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  animation: popoverFadeIn 0.18s ease-out;
+}
+
+@keyframes popoverFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popoverHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #FAF7F0;
+  padding-bottom: 0.65rem;
+}
+
+.popoverTitle {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #102744;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #7A889B;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.closeBtn:hover {
+  color: #102744;
+}
+
+.popoverDesc {
+  font-size: 0.78rem;
+  color: #526072;
+  line-height: 1.45;
+}
+
+.actionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.actionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  background-color: #FAF7F0;
+  color: #102744;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.actionItem:hover {
+  background-color: #FFF9F1;
+  border-color: #F45124;
+  color: #F45124;
+}
+
+.actionItemReset {
+  background-color: #FFF9F1;
+  color: #F45124;
+  border: 1px dashed #F6A53A;
+  margin-top: 0.4rem;
+}
+
+.actionItemReset:hover {
+  background-color: #F45124;
+  color: #FFFFFF;
+}

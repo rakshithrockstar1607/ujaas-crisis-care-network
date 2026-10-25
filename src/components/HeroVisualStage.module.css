@@ -1,0 +1,212 @@
+.stageWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 992px) {
+  .stageWrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: auto;
+  }
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9.8;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+@media (min-width: 992px) {
+  .stage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    max-height: none;
+    border-radius: 0;
+    aspect-ratio: auto;
+  }
+}
+
+/* Ambient Discovery Cue */
+.interactiveCue {
+  position: absolute;
+  bottom: 2rem;
+  right: 2.5rem;
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.95rem;
+  background-color: rgba(9, 28, 51, 0.84);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--color-pure-white);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 6px 20px rgba(9, 28, 51, 0.28);
+  z-index: 15;
+  pointer-events: none;
+  animation: fadeInCue 1s ease-out forwards;
+}
+
+@media (min-width: 992px) {
+  .interactiveCue {
+    display: flex;
+  }
+}
+
+.cueDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-action-orange);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.cueIcon {
+  color: var(--color-golden-amber);
+}
+
+.cueText {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+
+@keyframes fadeInCue {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Supportive Memory Strip */
+.mobileMemoryStrip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  background-color: var(--color-light-cream);
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-hairline);
+  box-shadow: 0 4px 14px rgba(9, 28, 51, 0.04);
+}
+
+@media (min-width: 992px) {
+  .mobileMemoryStrip {
+    display: none;
+  }
+}
+
+.mobileStripHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobileStripEyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-action-orange);
+}
+
+.mobileStripSub {
+  font-size: 0.72rem;
+  color: var(--color-secondary-text);
+  font-style: italic;
+}
+
+.mobileCardsRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.mobileCardBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.65rem;
+  background-color: var(--color-pure-white);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+  text-align: left;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.mobileCardBtn:active {
+  transform: scale(0.98);
+  border-color: var(--color-action-orange);
+}
+
+.mobileCardImgWrap {
+  width: 62px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--color-hairline);
+}
+
+.mobileCardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mobileCardMeta {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.mobileCardTitle {
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-deep-navy);
+}
+
+.mobileCardCaption {
+  font-size: 0.76rem;
+  color: var(--color-secondary-text);
+  margin-top: 2px;
+  font-style: italic;
+}
+
+.mobileCardArrow {
+  color: var(--color-action-orange);
+  flex-shrink: 0;
+}

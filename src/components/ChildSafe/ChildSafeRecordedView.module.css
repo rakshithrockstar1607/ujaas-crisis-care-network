@@ -1,0 +1,257 @@
+.container {
+  min-height: calc(100vh - 84px);
+  background-color: #FAF7F0;
+  padding: var(--page-top-padding-mobile) 1.25rem 5rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: var(--page-top-padding) 2rem 5rem;
+  }
+}
+
+.contentWrap {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* Card Container */
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #DDD8CE;
+  border-radius: 20px;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 10px 30px -10px rgba(16, 39, 68, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 3rem 2.5rem;
+  }
+}
+
+.iconRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iconWrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background-color: #FFF9F1;
+  color: #102744;
+  border: 1.5px solid #F6A53A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  background-color: rgba(16, 39, 68, 0.08);
+  color: #102744;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #F6A53A;
+}
+
+/* Heading & Subtitle */
+.title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: #102744;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #526072;
+  line-height: 1.6;
+}
+
+/* Case Details Box */
+.detailsBox {
+  background-color: #FAF7F0;
+  border: 1px solid #DDD8CE;
+  border-radius: 14px;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 600px) {
+  .detailsBox {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.detailRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detailLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #7A889B;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.detailValue {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #102744;
+}
+
+.caseRefBadge {
+  font-family: monospace;
+  font-size: 1.15rem;
+  color: #F45124;
+  letter-spacing: 0.04em;
+}
+
+/* Emergency Advisory Strip */
+.emergencyStrip {
+  background-color: #FFF9F1;
+  border-left: 3px solid #F45124;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.88rem;
+  color: #102744;
+  line-height: 1.5;
+}
+
+.stripIcon {
+  color: #F45124;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+/* Primary Action Buttons */
+.btnGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .btnGrid {
+    flex-direction: row;
+  }
+}
+
+.primaryBtn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.5rem;
+  background-color: #102744;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.primaryBtn:hover {
+  background-color: #091C33;
+}
+
+.secondaryBtn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.5rem;
+  background-color: #FFFFFF;
+  color: #102744;
+  border: 1.5px solid #102744;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.secondaryBtn:hover {
+  background-color: #FAF7F0;
+}
+
+/* Coordinator Switcher Banner */
+.coordinatorBox {
+  margin-top: 0.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed #DDD8CE;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.coordMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.coordTitle {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #102744;
+}
+
+.coordDesc {
+  font-size: 0.8rem;
+  color: #526072;
+}
+
+.coordBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 8px;
+  background-color: #FFF9F1;
+  color: #F45124;
+  border: 1.5px solid #F6A53A;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.coordBtn:hover {
+  background-color: #F45124;
+  color: #FFFFFF;
+  border-color: #F45124;
+}

@@ -1,0 +1,407 @@
+/* ContactDetailDrawer.module.css - Matched to Reference 03 */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(9, 28, 51, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 900;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.backdropOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-width: 540px;
+  background-color: #FFFDF9;
+  box-shadow: -12px 0 40px rgba(9, 28, 51, 0.25);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  border-left: 1.5px solid var(--color-deep-navy);
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+.topCloseRow {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  z-index: 20;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--color-hairline-dark);
+  background-color: #FFFFFF;
+  color: var(--color-deep-navy);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.closeBtn:hover {
+  background-color: var(--color-light-cream);
+  border-color: var(--color-deep-navy);
+}
+
+.contentBody {
+  padding: 1.75rem 1.75rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Header Area: Square Photo + Info + Action Icons */
+.profileHeader {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+.squarePortrait {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  object-position: top center;
+  border: 1.5px solid var(--color-deep-navy);
+  box-shadow: 0 4px 0 0 var(--color-deep-navy);
+  flex-shrink: 0;
+}
+
+.headerTextCol {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.statusPillAlert {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  align-self: flex-start;
+  padding: 0.2rem 0.55rem;
+  background-color: #FFF2EB;
+  color: #E05624;
+  border: 1px solid rgba(224, 86, 36, 0.3);
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.statusPillSafe {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  align-self: flex-start;
+  padding: 0.2rem 0.55rem;
+  background-color: #EDF7F0;
+  color: #2E7D32;
+  border: 1px solid rgba(46, 125, 50, 0.3);
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.nameHeading {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--color-deep-navy);
+  line-height: 1.15;
+}
+
+.relationshipText {
+  font-size: 0.84rem;
+  color: var(--color-secondary-text);
+  margin-top: 2px;
+}
+
+.locationText {
+  font-size: 0.82rem;
+  color: var(--color-secondary-text);
+  margin-top: 2px;
+}
+
+.quickActionsRow {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.85rem;
+}
+
+.actionIconBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-primary-navy);
+  transition: color var(--transition-fast);
+}
+
+.iconCircle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #EFF6FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1A56DB;
+  border: 1px solid rgba(26, 86, 219, 0.2);
+  transition: all var(--transition-fast);
+}
+
+.actionIconBtn:hover .iconCircle {
+  background-color: #1A56DB;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.actionLabel {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-deep-navy);
+}
+
+/* Tabs Bar */
+.tabsBar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-bottom: 1.5px solid var(--color-hairline);
+  margin-top: 0.5rem;
+}
+
+.tabBtn {
+  padding: 0.5rem 0.25rem;
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-secondary-text);
+  cursor: pointer;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.tabBtn:hover {
+  color: var(--color-deep-navy);
+}
+
+.tabBtnActive {
+  color: var(--color-action-orange);
+}
+
+.tabBtnActive::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5px;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background-color: var(--color-action-orange);
+  border-radius: 2px;
+}
+
+/* Alert Box: Possible care gap */
+.alertCard {
+  background-color: #FFF2EB;
+  border: 1.5px solid #FFBEA8;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.alertIconWrap {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #E05624;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.alertContent {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.alertTitle {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #C23E11;
+}
+
+.alertText {
+  font-size: 0.82rem;
+  color: #7A321B;
+  line-height: 1.45;
+}
+
+/* 3 Meta Info Cards Row */
+.metaCardsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+}
+
+@media (max-width: 520px) {
+  .metaCardsRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.metaCard {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.metaCardIconRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-action-orange);
+}
+
+.metaCardLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-secondary-text);
+  line-height: 1.2;
+}
+
+.metaCardValue {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-deep-navy);
+  line-height: 1.25;
+}
+
+/* About Box */
+.aboutBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.aboutTitle {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-deep-navy);
+}
+
+.aboutText {
+  font-size: 0.84rem;
+  color: var(--color-secondary-text);
+  line-height: 1.5;
+}
+
+/* Footer Action Buttons */
+.footerButtons {
+  display: flex;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 480px) {
+  .footerButtons {
+    flex-direction: column;
+  }
+}
+
+.reviewConcernBtn {
+  flex: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.85rem 1.25rem;
+  background-color: var(--color-action-orange);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: var(--radius-btn);
+  border: 1.5px solid var(--color-deep-navy);
+  box-shadow: 0 3px 0 0 var(--color-deep-navy);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.reviewConcernBtn:hover {
+  background-color: #E03E12;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 0 var(--color-deep-navy);
+}
+
+.viewCareChainBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.85rem 1.25rem;
+  background-color: #FFFFFF;
+  color: var(--color-deep-navy);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: var(--radius-btn);
+  border: 1.5px solid var(--color-deep-navy);
+  box-shadow: 0 3px 0 0 var(--color-deep-navy);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.viewCareChainBtn:hover {
+  background-color: var(--color-light-cream);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 0 var(--color-deep-navy);
+}

@@ -1,0 +1,621 @@
+.container {
+  min-height: calc(100vh - 80px);
+  background-color: #FAF7F0;
+  padding: var(--page-top-padding-mobile) 1.25rem 5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: var(--page-top-padding) 2rem 5rem;
+  }
+}
+
+.contentWrap {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  margin-bottom: 2.25rem;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #F45124;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-family: 'Canela', Georgia, serif;
+  font-size: 3.25rem;
+  font-weight: 700;
+  color: #102744;
+  line-height: 1.1;
+  margin: 0 0 0.5rem;
+}
+
+.highlight {
+  color: #F45124;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #526072;
+  margin: 0;
+  max-width: 720px;
+  line-height: 1.5;
+}
+
+/* Layout */
+.mainLayout {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.formCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.formSection {
+  background-color: #FFFFFF;
+  border: 1.5px solid #DDD8CE;
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sectionHeadingRow {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.sectionNumber {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #F5EFE6;
+  border: 1.5px solid #DDD8CE;
+  color: #102744;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.sectionTitle {
+  font-family: 'Canela', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #102744;
+  margin: 0 0 0.25rem;
+}
+
+.sectionSub {
+  font-size: 0.85rem;
+  color: #526072;
+}
+
+/* Situation Cards Grid */
+.situationsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+.situationCard {
+  background-color: #FFFFFF;
+  border: 1.5px solid #DDD8CE;
+  border-radius: 1rem;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.situationCard:hover {
+  border-color: #F45124;
+}
+
+.situationCardActive {
+  border-color: #F45124;
+  background-color: #FFFDFC;
+  box-shadow: 0 4px 14px rgba(244, 81, 36, 0.1);
+}
+
+.sitIconCircle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #FFF2ED;
+  color: #F45124;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+}
+
+.sitIconCircleHazard {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #FEF2F2;
+  color: #DC2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+}
+
+.situationCard strong {
+  font-size: 0.875rem;
+  color: #102744;
+  line-height: 1.35;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.radioDotWrap {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #DDD8CE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radioDotActive {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #F45124;
+}
+
+/* Inputs */
+.inputField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.inputField label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #102744;
+}
+
+.textInput {
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #DDD8CE;
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
+  color: #102744;
+  background-color: #FFFFFF;
+}
+
+.textInput:focus {
+  outline: none;
+  border-color: #F45124;
+}
+
+.textarea {
+  padding: 0.85rem 1rem 1.75rem;
+  border: 1.5px solid #DDD8CE;
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #102744;
+  background-color: #FFFFFF;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #F45124;
+}
+
+.charCount {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.5rem;
+  font-size: 0.75rem;
+  color: #8C99A8;
+}
+
+.booleanRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.boolQuestion {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #102744;
+}
+
+.boolPills {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.boolBtn {
+  background-color: #FFFFFF;
+  border: 1.5px solid #DDD8CE;
+  color: #526072;
+  border-radius: 0.65rem;
+  padding: 0.45rem 1.15rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.boolBtnActive {
+  background-color: #F45124;
+  border: 1.5px solid #F45124;
+  color: #FFFFFF;
+  border-radius: 0.65rem;
+  padding: 0.45rem 1.15rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Emergency Strip */
+.emergencyStrip {
+  background-color: #FFF2ED;
+  border: 1.5px solid #FCD4C5;
+  border-radius: 0.85rem;
+  padding: 0.85rem 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.emergencyPhoneIcon {
+  color: #F45124;
+  flex-shrink: 0;
+}
+
+.emergencyStrip strong {
+  display: block;
+  font-size: 0.875rem;
+  color: #102744;
+}
+
+.emergencyStrip span {
+  display: block;
+  font-size: 0.8rem;
+  color: #526072;
+}
+
+/* Form Footer */
+.formFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.backBtn {
+  background: none;
+  border: 1px solid #DDD8CE;
+  background-color: #FFFFFF;
+  color: #102744;
+  border-radius: 0.75rem;
+  padding: 0.85rem 1.35rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.submitBtn {
+  background-color: #F45124;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.85rem 1.85rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  box-shadow: 0 4px 14px rgba(244, 81, 36, 0.25);
+}
+
+.submitBtn:hover {
+  background-color: #E03E12;
+}
+
+/* Right Guidance Column */
+.sideCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.guideCard {
+  background-color: #FFFFFF;
+  border: 1.5px solid #DDD8CE;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+}
+
+.guideCardTitle {
+  font-family: 'Canela', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #102744;
+  margin: 0 0 1.25rem;
+}
+
+.nextStepsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.nextStepItem {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.stepNumCircle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #F45124;
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.nextStepItem strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #102744;
+  margin-bottom: 0.15rem;
+}
+
+.nextStepItem span {
+  display: block;
+  font-size: 0.8rem;
+  color: #526072;
+  line-height: 1.4;
+}
+
+.nextStepLine {
+  width: 2px;
+  height: 20px;
+  background-color: #DDD8CE;
+  margin-left: 11px;
+}
+
+.privacyCard {
+  background-color: #FEF7EC;
+  border: 1px solid #FCD4C5;
+  border-radius: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.privacyIcon {
+  color: #D97706;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.privacyCard strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #102744;
+  margin-bottom: 0.25rem;
+}
+
+.privacyCard p {
+  font-size: 0.825rem;
+  color: #526072;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.guaranteeCard {
+  background-color: #FFFFFF;
+  border: 1.5px solid #DDD8CE;
+  border-radius: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.guaranteeIcon {
+  color: #F45124;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.guaranteeCard strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #102744;
+  margin-bottom: 0.25rem;
+}
+
+.guaranteeCard p {
+  font-size: 0.825rem;
+  color: #526072;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Submission Confirmation Card */
+.confirmationCard {
+  background-color: #FFFFFF;
+  border: 2px solid #287346;
+  border-radius: 1.5rem;
+  padding: 3rem 2.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(16, 39, 68, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirmIconWrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: #E8F5E9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.confirmIcon {
+  color: #287346;
+}
+
+.confirmBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #287346;
+  margin-bottom: 0.5rem;
+}
+
+.confirmTitle {
+  font-family: 'Canela', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #102744;
+  margin: 0 0 1.25rem;
+}
+
+.referenceBox {
+  background-color: #FAF7F0;
+  border: 1px dashed #DDD8CE;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-flex;
+  gap: 0.65rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.referenceBox span {
+  font-size: 0.85rem;
+  color: #526072;
+}
+
+.referenceBox strong {
+  font-size: 1.05rem;
+  color: #F45124;
+  letter-spacing: 0.05em;
+}
+
+.confirmDesc {
+  font-size: 0.95rem;
+  color: #526072;
+  line-height: 1.6;
+  margin: 0 0 1.75rem;
+  max-width: 520px;
+}
+
+.emergencyBox {
+  background-color: #FFF2ED;
+  border: 1px solid #FCD4C5;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.emergencyBox strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #102744;
+  margin-bottom: 0.35rem;
+}
+
+.emergencyBox p {
+  font-size: 0.85rem;
+  color: #526072;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.returnBtn {
+  background-color: #102744;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.85rem 1.85rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.returnBtn:hover {
+  background-color: #091C33;
+}
+
+@media (max-width: 960px) {
+  .mainLayout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .situationsGrid {
+    grid-template-columns: 1fr;
+  }
+  .title {
+    font-size: 2.25rem;
+  }
+}

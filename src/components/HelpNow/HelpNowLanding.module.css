@@ -1,0 +1,469 @@
+.container {
+  min-height: calc(100vh - 80px);
+  background-color: #FAF7F0;
+  padding: var(--page-top-padding-mobile) 1.25rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: var(--page-top-padding) 2.5rem 5rem;
+  }
+}
+
+.ambientGlow {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(244, 81, 36, 0.08) 0%, rgba(250, 247, 240, 0) 70%);
+  pointer-events: none;
+}
+
+.contentGrid {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 1.15fr;
+  gap: 3.5rem;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+/* Left Column */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #F45124;
+  margin-bottom: 1.25rem;
+}
+
+.dash {
+  font-weight: 900;
+}
+
+.headline {
+  font-family: 'Canela', Georgia, serif;
+  font-size: 4.25rem;
+  font-weight: 700;
+  color: #102744;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+}
+
+.highlight {
+  color: #F45124;
+  display: inline;
+}
+
+.subtext {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #526072;
+  margin: 0 0 1.75rem;
+  max-width: 520px;
+}
+
+.prototypeNotice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #FFFFFF;
+  border: 1px solid #DDD8CE;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: #526072;
+  margin-bottom: 2rem;
+  max-width: 520px;
+}
+
+.noticeIcon {
+  color: #102744;
+  flex-shrink: 0;
+}
+
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
+  background-color: #F45124;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0.85rem;
+  padding: 0.95rem 1.85rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  box-shadow: 0 8px 24px rgba(244, 81, 36, 0.28);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.primaryBtn:hover {
+  background-color: #E03E12;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(244, 81, 36, 0.35);
+}
+
+.secondaryBtn {
+  background-color: #FFFFFF;
+  color: #102744;
+  border: 1px solid #DDD8CE;
+  border-radius: 0.85rem;
+  padding: 0.95rem 1.65rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  transition: all 0.2s ease;
+}
+
+.secondaryBtn:hover {
+  background-color: #F5EFE6;
+  border-color: #CCC4B4;
+}
+
+.featureStrip {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-top: 1px solid #DDD8CE;
+  padding-top: 2rem;
+  max-width: 520px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.featureIconWrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 0.65rem;
+  background-color: #FFF2ED;
+  border: 1px solid #FCD4C5;
+  color: #F45124;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.featureText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.featureText strong {
+  font-size: 0.95rem;
+  color: #102744;
+}
+
+.featureText span {
+  font-size: 0.85rem;
+  color: #526072;
+}
+
+/* Right Column */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.imageStage {
+  position: relative;
+  border-radius: 1.75rem;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(16, 39, 68, 0.12);
+  border: 1px solid #DDD8CE;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+}
+
+.stagePhoto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.photoOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(250, 247, 240, 0.92) 0%,
+    rgba(250, 247, 240, 0.78) 45%,
+    rgba(250, 247, 240, 0.3) 100%
+  );
+}
+
+.cardsStack {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.actionCard {
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid #DDD8CE;
+  border-radius: 1.25rem;
+  padding: 1.35rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(16, 39, 68, 0.08);
+}
+
+.actionCard:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 16px 36px rgba(16, 39, 68, 0.14);
+  border-color: #F45124;
+}
+
+.cardA {
+  border-color: #F45124;
+  box-shadow: 0 10px 30px rgba(244, 81, 36, 0.12);
+}
+
+.iconCircleA {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #FFF2ED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardIconA {
+  color: #F45124;
+}
+
+.iconCircleB {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #EEF4FA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardIconB {
+  color: #102744;
+}
+
+.iconCircleC {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #FEF7EC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardIconC {
+  color: #D97706;
+}
+
+.cardContent {
+  flex: 1;
+}
+
+.cardTitle {
+  font-family: 'Canela', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #102744;
+  margin: 0 0 0.35rem;
+  line-height: 1.25;
+}
+
+.cardDesc {
+  font-size: 0.9rem;
+  color: #526072;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.arrowCircleA {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #F45124;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.actionCard:hover .arrowCircleA {
+  transform: translateX(3px);
+}
+
+.arrowCircleNeutral {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #FAF7F0;
+  border: 1px solid #DDD8CE;
+  color: #102744;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.actionCard:hover .arrowCircleNeutral {
+  background-color: #102744;
+  color: #FFFFFF;
+  border-color: #102744;
+  transform: translateX(3px);
+}
+
+/* Emergency 112 Banner */
+.emergencyBanner {
+  background-color: #FFF2ED;
+  border: 1.5px solid #FCD4C5;
+  border-radius: 1.25rem;
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: 0 6px 20px rgba(244, 81, 36, 0.08);
+}
+
+.emergencyLeft {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.emergencyIconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #F45124;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.emergencyTitle {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #102744;
+  margin-bottom: 0.25rem;
+}
+
+.emergencyText {
+  font-size: 0.85rem;
+  color: #526072;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.emergencyBtn {
+  background-color: #FFFFFF;
+  color: #F45124;
+  border: 1.5px solid #F45124;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.emergencyBtn:hover {
+  background-color: #F45124;
+  color: #FFFFFF;
+}
+
+@media (max-width: 1080px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .headline {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 2rem 1.25rem 4rem;
+  }
+  .headline {
+    font-size: 2.75rem;
+  }
+  .imageStage {
+    min-height: auto;
+    padding: 1.5rem 1rem;
+  }
+  .emergencyBanner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .emergencyBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

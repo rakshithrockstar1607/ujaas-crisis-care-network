@@ -1,0 +1,168 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.intentBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFF3EB;
+  border: 1px solid #FDCFBF;
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  font-size: 0.84rem;
+}
+
+.intentLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #091C33;
+}
+
+.intentLeft strong {
+  color: #F45124;
+}
+
+.intentIcon {
+  color: #F45124;
+}
+
+.intentHint {
+  font-size: 0.78rem;
+  color: #7A8796;
+}
+
+.headline {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 2.6rem;
+  line-height: 1.15;
+  font-weight: 500;
+  color: #091C33;
+  margin: 0 0 10px 0;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #4A5666;
+  margin: 0 0 28px 0;
+}
+
+.capsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.capCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #FFFFFF;
+  border: 1.5px solid #D5CDC0;
+  border-radius: 8px;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.capCard:hover {
+  border-color: #091C33;
+  box-shadow: 2px 3px 0px #091C33;
+}
+
+.cardSelected {
+  background: #FFFDF9;
+  border: 2px solid #F45124;
+  box-shadow: 2px 4px 0px #F45124;
+}
+
+.iconCircle {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #FFF3EB;
+  border: 1px solid #FDCFBF;
+  color: #F45124;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.capText {
+  flex-grow: 1;
+}
+
+.capTitle {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #091C33;
+  margin: 0 0 2px 0;
+}
+
+.capDesc {
+  font-size: 0.82rem;
+  color: #556272;
+  margin: 0;
+}
+
+.checkIndicator {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid #A8B3C0;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.cardSelected .checkIndicator {
+  background: #F45124;
+  border-color: #F45124;
+}
+
+.safetyBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #EDF3F9;
+  border: 1px solid #C8D8E8;
+  border-radius: 6px;
+  padding: 14px 18px;
+}
+
+.shieldIcon {
+  color: #287346;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.safetyTitle {
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #091C33;
+  margin: 0 0 4px 0;
+}
+
+.safetyDesc {
+  font-size: 0.8rem;
+  color: #4A5666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .capsGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,162 @@
+.toolbarWrap {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1000;
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+}
+
+.triggerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #102744;
+  color: #FFFFFF;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  border: 1.5px solid #DDD8CE;
+  box-shadow: 0 10px 25px -5px rgba(9, 28, 51, 0.25);
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.triggerBtn:hover {
+  background-color: #091C33;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -6px rgba(9, 28, 51, 0.35);
+}
+
+.pillBadge {
+  background-color: #F45124;
+  color: #FFFFFF;
+  font-size: 0.68rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-weight: 800;
+}
+
+.popover {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 0;
+  width: 340px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background-color: #FFFFFF;
+  border: 1px solid #DDD8CE;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 20px 45px -10px rgba(9, 28, 51, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  animation: popoverFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popoverFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popoverHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #F0ECE1;
+  padding-bottom: 0.75rem;
+}
+
+.popoverTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #102744;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: #8C99A8;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn:hover {
+  background-color: #FAF7F0;
+  color: #102744;
+}
+
+.popoverDesc {
+  font-size: 0.8rem;
+  color: #64748B;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.actionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.actionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FAF7F0;
+  border: 1px solid #EAE5D9;
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #102744;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+
+.actionItem:hover {
+  background-color: #FFF2ED;
+  border-color: #FCD4C5;
+  color: #F45124;
+  transform: translateX(2px);
+}
+
+.actionItemReset {
+  margin-top: 0.5rem;
+  border-top: 1px dashed #DDD8CE;
+  padding-top: 0.75rem;
+  background-color: #FEF2F2;
+  border-color: #FECACA;
+  color: #991B1B;
+}
+
+.actionItemReset:hover {
+  background-color: #FEE2E2;
+  border-color: #FCA5A5;
+  color: #7F1D1D;
+}
+
+@media (max-width: 640px) {
+  .toolbarWrap {
+    left: 12px;
+    bottom: 12px;
+  }
+  .popover {
+    width: 290px;
+  }
+}

@@ -1,0 +1,173 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.headline {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 2.6rem;
+  line-height: 1.15;
+  font-weight: 500;
+  color: #091C33;
+  margin: 0 0 10px 0;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #4A5666;
+  margin: 0 0 28px 0;
+}
+
+.langGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.langCard {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #FFFFFF;
+  border: 1.5px solid #D5CDC0;
+  border-radius: 8px;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.langCard:hover {
+  border-color: #091C33;
+  box-shadow: 2px 3px 0px #091C33;
+}
+
+.cardSelected {
+  background: #FFFDF9;
+  border: 2px solid #F45124;
+  box-shadow: 2px 4px 0px #F45124;
+}
+
+.iconCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #FFF3EB;
+  border: 1px solid #FDCFBF;
+  color: #F45124;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.langText {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.langNative {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #091C33;
+}
+
+.langSub {
+  font-size: 0.8rem;
+  color: #6B7888;
+}
+
+.checkIndicator {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid #A8B3C0;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.cardSelected .checkIndicator {
+  background: #F45124;
+  border-color: #F45124;
+}
+
+.commSection {
+  margin-bottom: 28px;
+}
+
+.sectionTitle {
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #091C33;
+  margin: 0 0 14px 0;
+}
+
+.commGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.commCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #FFFFFF;
+  border: 1.5px solid #D5CDC0;
+  border-radius: 8px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.commCard:hover {
+  border-color: #091C33;
+}
+
+.commText {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.commTitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #091C33;
+}
+
+.commSub {
+  font-size: 0.75rem;
+  color: #6B7888;
+}
+
+.infoBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #EDF3F9;
+  border: 1px solid #C8D8E8;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 0.82rem;
+  color: #334A60;
+}
+
+.infoIcon {
+  color: #1E4E79;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .langGrid, .commGrid {
+    grid-template-columns: 1fr;
+  }
+}

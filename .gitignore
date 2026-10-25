@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+
+# Production builds
+dist/
+dist-ssr/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Editor & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# Ephemeral testing scripts and test run artifacts
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
+/*.js
+screenshots_*/
+phase2_verified/
+ref_thumbs/
+
+# Working design references & dumps (not required for runtime/build)
+/Phase *
+/Section *
+/Website References
+/2 page submission
+/Image Assets
+/Fonts
+/Icons

@@ -1,0 +1,157 @@
+.heroSection {
+  position: relative;
+  width: 100%;
+  margin-top: var(--header-height);
+  min-height: calc(100svh - var(--header-height));
+  background-color: var(--color-bg-ivory);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 992px) {
+  .heroSection {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0;
+  }
+}
+
+/* 
+  Cinematic Visual Stage Layer 
+  Occupies the full remaining viewport height beneath the navbar to the bottom edge.
+*/
+.stageLayer {
+  width: 100%;
+  order: 2;
+  padding: 1.5rem 1.25rem 2.5rem;
+  will-change: opacity, transform;
+  animation: heroRevealRight 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (min-width: 768px) {
+  .stageLayer {
+    padding: 2rem 2.25rem 3rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .stageLayer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    order: 1;
+    padding: 0;
+    pointer-events: auto;
+    z-index: 1;
+    overflow: hidden;
+    background-color: var(--color-bg-ivory);
+  }
+}
+
+@media (min-width: 1440px) {
+  .stageLayer {
+    left: 0;
+    width: 100%;
+  }
+}
+
+/* 
+  Editorial Content Container 
+  Positions text on the left, comfortably overlapping the soft atmospheric fade.
+*/
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.25rem 0;
+  position: relative;
+  z-index: 10;
+  order: 1;
+  pointer-events: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 2.75rem 2.25rem 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    position: relative;
+    flex: 0 0 44%;
+    width: 44%;
+    max-width: none;
+    margin: 0;
+    padding: 2.5rem clamp(2rem, 3.5vw, 4.5rem) 2.5rem clamp(2.5rem, 5vw, 6rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+    pointer-events: none;
+    background-color: transparent;
+    order: 2;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    flex: 0 0 43%;
+    width: 43%;
+    padding: 2.5rem clamp(2.5rem, 4vw, 5rem) 2.5rem clamp(3rem, 5.5vw, 7rem);
+  }
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 540px;
+  width: 100%;
+  will-change: opacity, transform;
+  animation: heroRevealLeft 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (min-width: 992px) {
+  .leftCol {
+    pointer-events: auto;
+    padding: 0;
+  }
+}
+
+@keyframes heroRevealLeft {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroRevealRight {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leftCol,
+  .stageLayer {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,446 @@
+/* FindHelperMapView.module.css - Matched to Reference 04 */
+
+.pageContainer {
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+  background-color: var(--color-bg-ivory);
+  padding: var(--page-top-padding-mobile) 1.25rem 4rem;
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .pageContainer {
+    padding: var(--page-top-padding) 2rem 5rem;
+  }
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--color-secondary-text);
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.breadLink {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-secondary-text);
+  padding: 0;
+  transition: color var(--transition-fast);
+}
+
+.breadLink:hover {
+  color: var(--color-action-orange);
+}
+
+.breadCurrent {
+  font-weight: 600;
+  color: var(--color-deep-navy);
+}
+
+.breadSep {
+  color: #CBD5E0;
+}
+
+/* Header */
+.headerArea {
+  margin-bottom: 1.25rem;
+}
+
+.backBtnHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.headingText {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-deep-navy);
+  line-height: 1.15;
+}
+
+.subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-secondary-text);
+  margin-top: 0.35rem;
+}
+
+/* Filter Chips Row */
+.filterRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.filterPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.9rem;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-hairline-dark);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-deep-navy);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filterPill:hover {
+  background-color: var(--color-light-cream);
+  border-color: var(--color-deep-navy);
+}
+
+.filterPillActive {
+  background-color: #EFF6FF;
+  border-color: #1A56DB;
+  color: #1A56DB;
+}
+
+/* Main Split Stage: Left Helper List + Right Interactive Route Map */
+.splitStage {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 960px) {
+  .splitStage {
+    flex-direction: row;
+    align-items: stretch;
+    height: 620px;
+  }
+}
+
+/* Left Helper Column */
+.helpersCol {
+  flex: 1;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 960px) {
+  .helpersCol {
+    max-width: 380px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+  }
+}
+
+.helperCard {
+  background-color: #FFFFFF;
+  border: 1.5px solid var(--color-deep-navy);
+  border-radius: var(--radius-md);
+  box-shadow: 0 3px 0 0 var(--color-deep-navy);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+}
+
+.helperCard:hover {
+  background-color: var(--color-light-cream);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 0 var(--color-deep-navy);
+}
+
+.helperCardActive {
+  background-color: #FFFDF9;
+  border-color: var(--color-action-orange);
+  box-shadow: 0 4px 0 0 var(--color-action-orange);
+}
+
+.helperCardHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.helperAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 1.5px solid var(--color-deep-navy);
+  flex-shrink: 0;
+}
+
+.helperInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.helperName {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-deep-navy);
+}
+
+.helperLocation {
+  font-size: 0.8rem;
+  color: var(--color-secondary-text);
+  margin-top: 1px;
+}
+
+.helperDistance {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--color-action-orange);
+  margin-top: 2px;
+}
+
+.helperStatusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.statusAvailable {
+  background-color: #EDF7F0;
+  color: #2E7D32;
+  border: 1px solid rgba(46, 125, 50, 0.3);
+}
+
+.statusBusy {
+  background-color: #EFF6FF;
+  color: #1976D2;
+  border: 1px solid rgba(25, 118, 210, 0.3);
+}
+
+.badgeRow {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.capabilityBadge {
+  padding: 2px 7px;
+  background-color: #F1EFEA;
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-deep-navy);
+}
+
+/* Right Route Map Column */
+.mapCol {
+  flex: 1.6;
+  position: relative;
+  background-color: #EBF1F2;
+  border: 1.5px solid var(--color-deep-navy);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 0 0 var(--color-deep-navy);
+  overflow: hidden;
+  min-height: 480px;
+}
+
+.mapElement {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+/* Floating Selected Helper Bottom Card */
+.selectedHelperBottomCard {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  background-color: #FFFFFF;
+  border: 1.5px solid var(--color-deep-navy);
+  border-radius: var(--radius-md);
+  box-shadow: 0 6px 20px rgba(9, 28, 51, 0.16);
+  padding: 1.15rem 1.25rem;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  animation: slideUp 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.bottomCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bottomCardProfile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bottomCardAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 1.5px solid var(--color-deep-navy);
+  flex-shrink: 0;
+}
+
+.bottomCardMeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.bottomCardName {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-deep-navy);
+}
+
+.bottomCardSub {
+  font-size: 0.8rem;
+  color: var(--color-secondary-text);
+}
+
+.bottomCardClose {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-secondary-text);
+  padding: 4px;
+}
+
+.bottomCardActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .bottomCardActions {
+    flex-direction: column;
+  }
+}
+
+.viewRouteBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-deep-navy);
+  color: #FFFFFF;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.viewRouteBtn:hover {
+  background-color: #1A365D;
+}
+
+.requestHelpBtn {
+  flex: 1.3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-action-orange);
+  color: #FFFFFF;
+  border-radius: var(--radius-btn);
+  border: 1.5px solid var(--color-deep-navy);
+  box-shadow: 0 3px 0 0 var(--color-deep-navy);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.requestHelpBtn:hover {
+  background-color: #E03E12;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 0 var(--color-deep-navy);
+}
+
+/* Dispatching Feedback Banner */
+.dispatchBanner {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2E7D32;
+  color: #FFFFFF;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: bannerFade 0.3s ease-out;
+}
+
+@keyframes bannerFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}

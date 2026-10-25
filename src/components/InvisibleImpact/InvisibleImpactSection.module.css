@@ -1,0 +1,596 @@
+/* ==========================================================================
+   Section 02: The Invisible Impact
+   Design System: 70% Humanist Editorial × 30% Warm Neo-Brutalism
+   Harmonious Scale & High-Fidelity Presence
+   ========================================================================== */
+
+.section {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg-ivory, #FAF7F0);
+  padding: clamp(4rem, 6vw, 6rem) 0 clamp(3.5rem, 5vw, 5rem);
+  overflow: hidden;
+  border-top: 1px solid var(--color-hairline, #DDD8CE);
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 4rem);
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Two-Column Editorial Grid
+   ========================================================================== */
+.mainGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .mainGrid {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(2rem, 3.5vw, 4rem);
+  }
+}
+
+/* ==========================================================================
+   Left Column: Typography & CTAs (Expanded Impact)
+   ========================================================================== */
+.leftCol {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (min-width: 992px) {
+  .leftCol {
+    flex: 0 0 45%;
+    max-width: 48%;
+  }
+}
+
+.eyebrowContainer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.eyebrowLine {
+  display: inline-block;
+  width: 26px;
+  height: 3px;
+  background-color: var(--color-action-orange, #F45124);
+  border-radius: 2px;
+}
+
+.eyebrowText {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary-navy, #102744);
+}
+
+.headline {
+  font-family: var(--font-serif, 'Canela', Georgia, serif);
+  font-size: clamp(2.85rem, 4.3vw, 4.35rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--color-primary-navy, #102744);
+  margin: 0 0 1.75rem 0;
+}
+
+.headlineHighlight {
+  color: var(--color-action-orange, #F45124);
+  font-weight: 500;
+}
+
+.supportingCopy {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: clamp(1.1rem, 1.25vw, 1.25rem);
+  line-height: 1.68;
+  color: var(--color-secondary-text, #526072);
+  margin: 0 0 2.5rem 0;
+  max-width: 580px;
+}
+
+/* ==========================================================================
+   Neo-Brutalist Dual CTAs (Bigger & Bolder)
+   ========================================================================== */
+.ctaButtonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.primaryCta,
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.0625rem 1.85rem;
+  border-radius: 16px;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid var(--color-primary-navy, #102744);
+  box-shadow: 4px 4px 0px var(--color-primary-navy, #102744);
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 180ms ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.primaryCta {
+  background-color: var(--color-action-orange, #F45124);
+  color: #FFFFFF;
+}
+
+.primaryCta:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--color-primary-navy, #102744);
+  background-color: #E04318;
+}
+
+.primaryCta:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px var(--color-primary-navy, #102744);
+}
+
+.secondaryCta {
+  background-color: var(--color-bg-ivory, #FAF7F0);
+  color: var(--color-primary-navy, #102744);
+}
+
+.secondaryCta:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--color-primary-navy, #102744);
+  background-color: #FFFFFF;
+}
+
+.secondaryCta:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px var(--color-primary-navy, #102744);
+}
+
+.btnIcon {
+  flex-shrink: 0;
+}
+
+@media (max-width: 520px) {
+  .ctaButtonGroup {
+    flex-direction: column;
+  }
+  .primaryCta,
+  .secondaryCta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   Right Column: Visual Stage (Savitri Amma & Floating Cards)
+   ========================================================================== */
+.rightCol {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .rightCol {
+    flex: 0 0 54%;
+    justify-content: flex-end;
+  }
+}
+
+.visualStage {
+  position: relative;
+  width: 100%;
+  max-width: 740px;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .visualStage {
+    height: 580px;
+    min-height: 580px;
+  }
+}
+
+/* Savitri Amma Portrait Frame (Enlarged) */
+.portraitFrame {
+  position: relative;
+  width: clamp(320px, 32vw, 460px);
+  height: clamp(400px, 38vw, 550px);
+  border-radius: 26px;
+  border: 2px solid var(--color-primary-navy, #102744);
+  box-shadow: 7px 7px 0px rgba(16, 39, 68, 0.1);
+  overflow: hidden;
+  background-color: #EFE8DA;
+  flex-shrink: 0;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portraitFrame:hover {
+  transform: translateY(-3px);
+  box-shadow: 9px 9px 0px rgba(16, 39, 68, 0.14);
+}
+
+.portraitImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portraitFrame:hover .portraitImg {
+  transform: scale(1.02);
+}
+
+.portraitGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+}
+
+/* Decorative Accent Sparks */
+.accentSparkTop {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  z-index: 5;
+  animation: sparkPulse 3s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.accentSparkBottom {
+  position: absolute;
+  bottom: 12px;
+  left: 42%;
+  z-index: 5;
+  animation: sparkPulse 2.8s 0.6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes sparkPulse {
+  0% { transform: scale(0.9) rotate(0deg); opacity: 0.8; }
+  100% { transform: scale(1.15) rotate(15deg); opacity: 1; }
+}
+
+/* ==========================================================================
+   Floating Care Cards (Larger, Tactile Neo-Brutalist Pastels)
+   ========================================================================== */
+.careCard {
+  border-radius: 18px;
+  border: 2px solid var(--color-primary-navy, #102744);
+  box-shadow: 5px 5px 0px var(--color-primary-navy, #102744);
+  padding: 1.25rem 1.45rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 240ms cubic-bezier(0.16, 1, 0.3, 1),
+              z-index 0ms;
+  outline: none;
+  user-select: none;
+}
+
+.careCard:focus-visible {
+  outline: 2px solid var(--color-action-orange, #F45124);
+  outline-offset: 3px;
+}
+
+@media (min-width: 992px) {
+  .careCard {
+    position: absolute;
+    width: clamp(280px, 22vw, 335px);
+  }
+
+  /* Card 01: Top Right Peach */
+  .careCardPeach {
+    top: 2%;
+    left: 47%;
+    transform: rotate(-4deg);
+    z-index: 2;
+  }
+  .careCardPeach:hover,
+  .careCardPeach.cardActive {
+    transform: translate(6px, -10px) scale(1.04) rotate(-1deg);
+    box-shadow: 7.5px 7.5px 0px var(--color-primary-navy, #102744);
+    z-index: 10;
+  }
+
+  /* Card 02: Middle Right Blue */
+  .careCardBlue {
+    top: 36%;
+    left: 54%;
+    transform: rotate(3deg);
+    z-index: 3;
+  }
+  .careCardBlue:hover,
+  .careCardBlue.cardActive {
+    transform: translate(6px, -10px) scale(1.04) rotate(0deg);
+    box-shadow: 7.5px 7.5px 0px var(--color-primary-navy, #102744);
+    z-index: 10;
+  }
+
+  /* Card 03: Bottom Right Cream */
+  .careCardCream {
+    top: 70%;
+    left: 45%;
+    transform: rotate(5deg);
+    z-index: 4;
+  }
+  .careCardCream:hover,
+  .careCardCream.cardActive {
+    transform: translate(6px, -10px) scale(1.04) rotate(1deg);
+    box-shadow: 7.5px 7.5px 0px var(--color-primary-navy, #102744);
+    z-index: 10;
+  }
+}
+
+/* Mobile & Tablet Stacking for Care Cards */
+@media (max-width: 991px) {
+  .visualStage {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+    height: auto;
+    min-height: unset;
+  }
+
+  .portraitFrame {
+    width: 100%;
+    max-width: 440px;
+    height: 480px;
+  }
+
+  .accentSparkTop,
+  .accentSparkBottom {
+    display: none;
+  }
+
+  .careCard {
+    position: static;
+    width: 100%;
+    max-width: 440px;
+  }
+
+  .careCardPeach {
+    transform: rotate(-1.5deg);
+  }
+  .careCardBlue {
+    transform: rotate(1deg);
+  }
+  .careCardCream {
+    transform: rotate(-0.5deg);
+  }
+
+  .careCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 6px 0px var(--color-primary-navy, #102744);
+  }
+}
+
+/* Card Themes */
+.careCardPeach {
+  background-color: #FFEAD9;
+}
+.careCardBlue {
+  background-color: #DCE7F0;
+}
+.careCardCream {
+  background-color: #FFF2E5;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.cardIconBox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(16, 39, 68, 0.15);
+  color: var(--color-primary-navy, #102744);
+}
+
+.iconBoxPeach {
+  background-color: #FFD6BC;
+}
+.iconBoxBlue {
+  background-color: #C2D7E7;
+}
+.iconBoxCream {
+  background-color: #FFE1C8;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.325rem 0.75rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid rgba(16, 39, 68, 0.12);
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary-navy, #102744);
+}
+
+.statusDotGreen {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10B981;
+}
+
+.statusDotAmber {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #F59E0B;
+}
+
+.cardTitle {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--color-primary-navy, #102744);
+  margin: 0 0 0.45rem 0;
+  letter-spacing: -0.015em;
+}
+
+.cardDescription {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.875rem;
+  line-height: 1.52;
+  color: var(--color-secondary-text, #526072);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Bottom Full-Width Editorial Quote Strip (Expanded Presence)
+   ========================================================================== */
+.quoteStrip {
+  width: 100%;
+  margin-top: clamp(3rem, 4.5vw, 4.5rem);
+  padding: clamp(1.75rem, 2.5vw, 2.5rem) clamp(1.5rem, 3.5vw, 3.25rem);
+  box-sizing: border-box;
+  background-color: #FAF4EA;
+  border-top: 1.5px solid rgba(16, 39, 68, 0.15);
+  border-bottom: 1.5px solid rgba(16, 39, 68, 0.15);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .quoteStrip {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2.5rem;
+  }
+}
+
+.quoteBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--color-bg-ivory, #FAF7F0);
+  border: 2px solid var(--color-primary-navy, #102744);
+  box-shadow: 3px 3px 0px var(--color-primary-navy, #102744);
+  flex-shrink: 0;
+}
+
+.quoteMark {
+  font-family: var(--font-serif, 'Canela', Georgia, serif);
+  font-size: 2.35rem;
+  line-height: 1;
+  color: var(--color-action-orange, #F45124);
+  margin-top: 6px;
+}
+
+.quoteStatement {
+  font-family: var(--font-serif, 'Canela', Georgia, serif);
+  font-size: clamp(1.25rem, 1.85vw, 1.7rem);
+  font-weight: 400;
+  line-height: 1.38;
+  color: var(--color-primary-navy, #102744);
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+@media (min-width: 992px) {
+  .quoteStatement {
+    text-align: left;
+  }
+}
+
+.quoteHighlight {
+  color: var(--color-action-orange, #F45124);
+  font-weight: 500;
+}
+
+.cadenceBlock {
+  display: flex;
+  align-items: center;
+  gap: 1.125rem;
+  flex-shrink: 0;
+}
+
+.connectedCirclesSvg {
+  flex-shrink: 0;
+}
+
+.cadenceLines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.825rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary-navy, #102744);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   Reduced Motion
+   ========================================================================== */
+.reducedMotion .accentSparkTop,
+.reducedMotion .accentSparkBottom {
+  animation: none;
+}
+
+.reducedMotion .careCard,
+.reducedMotion .portraitFrame,
+.reducedMotion .portraitImg,
+.reducedMotion .primaryCta,
+.reducedMotion .secondaryCta {
+  transition: none !important;
+}
+
+.reducedMotion .careCard:hover,
+.reducedMotion .primaryCta:hover,
+.reducedMotion .secondaryCta:hover {
+  transform: none !important;
+}

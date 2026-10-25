@@ -1,0 +1,173 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.headline {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 2.6rem;
+  line-height: 1.15;
+  font-weight: 500;
+  color: #091C33;
+  margin: 0 0 10px 0;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #4A5666;
+  margin: 0 0 32px 0;
+}
+
+.verifyCard {
+  background: #FFFFFF;
+  border: 1.5px solid #091C33;
+  box-shadow: 4px 5px 0px #091C33;
+  border-radius: 8px;
+  padding: 32px 36px;
+  margin-bottom: 28px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.iconCircle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #FFF3EB;
+  border: 1px solid #FDCFBF;
+  color: #F45124;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #091C33;
+  margin: 0 0 4px 0;
+}
+
+.cardSub {
+  font-size: 0.88rem;
+  color: #556272;
+  margin: 0;
+}
+
+.otpGrid {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.otpInput {
+  width: 58px;
+  height: 68px;
+  background: #FAF7F0;
+  border: 1.5px solid #091C33;
+  border-radius: 6px;
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 2rem;
+  font-weight: 600;
+  color: #091C33;
+  text-align: center;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.otpInput:focus {
+  border-color: #F45124;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(244, 81, 36, 0.18);
+}
+
+.otpFilled {
+  background: #FFFFFF;
+  border-color: #091C33;
+}
+
+.successMessage {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #287346;
+  margin-bottom: 20px;
+}
+
+.helperActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  border-top: 1px dashed #D5CDC0;
+  font-size: 0.85rem;
+}
+
+.resendBlock {
+  color: #556272;
+}
+
+.textLink {
+  background: transparent;
+  border: none;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #F45124;
+  cursor: pointer;
+  padding: 0;
+}
+
+.textLink:hover {
+  text-decoration: underline;
+}
+
+.disclaimerBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #EDF3F9;
+  border: 1px solid #C8D8E8;
+  border-radius: 6px;
+  padding: 16px 20px;
+}
+
+.shieldWrap {
+  color: #287346;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.disclaimerTitle {
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #091C33;
+  margin: 0 0 4px 0;
+}
+
+.disclaimerText {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #4A5666;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .otpInput {
+    width: 44px;
+    height: 54px;
+    font-size: 1.5rem;
+  }
+}

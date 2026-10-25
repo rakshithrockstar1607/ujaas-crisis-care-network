@@ -1,0 +1,224 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #F45124;
+  margin-bottom: 8px;
+}
+
+.headline {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 2.6rem;
+  line-height: 1.15;
+  font-weight: 500;
+  color: #091C33;
+  margin: 0 0 10px 0;
+}
+
+.orangeWord {
+  color: #F45124;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #4A5666;
+  margin: 0 0 32px 0;
+}
+
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.intentCard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #FFFFFF;
+  border: 1.5px solid #D5CDC0;
+  border-radius: 8px;
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.intentCard:hover {
+  border-color: #091C33;
+  transform: translateY(-1px);
+  box-shadow: 2px 4px 0px #091C33;
+}
+
+.cardSelected {
+  background: #FFFDF9;
+  border: 2px solid #F45124;
+  box-shadow: 2px 4px 0px #F45124;
+}
+
+.demoBadge {
+  position: absolute;
+  top: -10px;
+  right: 24px;
+  background: #091C33;
+  color: #FFFFFF;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.iconCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: #FFF3EB;
+  border: 1px solid #FDCFBF;
+  color: #F45124;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardText {
+  flex-grow: 1;
+}
+
+.cardTitle {
+  font-family: var(--font-heading, 'Canela', serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #091C33;
+  margin: 0 0 4px 0;
+}
+
+.cardDesc {
+  font-size: 0.9rem;
+  color: #556272;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.radioIndicator {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid #A8B3C0;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.cardSelected .radioIndicator {
+  background: #F45124;
+  border-color: #F45124;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.noteLeft {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #4A5666;
+}
+
+.shieldIcon {
+  color: #287346;
+}
+
+.shortcutsGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.shortcutBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FAF7F0;
+  border: 1px solid #091C33;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #091C33;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.shortcutBtn:hover {
+  background: #FFFFFF;
+  box-shadow: 2px 2px 0px #091C33;
+}
+
+.aaravSkipBtn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #F45124;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.aaravSkipBtn:hover {
+  text-decoration: underline;
+}
+
+.emergencyStrip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFF3EB;
+  border: 1px solid #FDCFBF;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #9A2408;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.emergencyStrip:hover {
+  background: #FFE8DC;
+}
+
+.emergencyPhoneIcon {
+  color: #F45124;
+}
+
+@media (max-width: 768px) {
+  .headline {
+    font-size: 2rem;
+  }
+  .metaRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

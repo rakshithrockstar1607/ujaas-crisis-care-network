@@ -1,0 +1,316 @@
+.pageContainer {
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+  background-color: var(--color-bg-ivory);
+  padding: var(--page-top-padding-mobile) 1.25rem 4rem;
+}
+
+@media (min-width: 768px) {
+  .pageContainer {
+    padding: var(--page-top-padding) 2rem 5rem;
+  }
+}
+
+.inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-secondary-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  align-self: flex-start;
+  transition: color var(--transition-fast);
+}
+
+.backBtn:hover {
+  color: var(--color-action-orange);
+}
+
+.headerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.eyebrowWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.eyebrowLine {
+  display: block;
+  width: 32px;
+  height: 2px;
+  background-color: var(--color-success-green);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-success-green);
+}
+
+.headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  color: var(--color-deep-navy);
+  line-height: 1.15;
+}
+
+.subheadline {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  color: var(--color-secondary-text);
+  line-height: 1.5;
+}
+
+/* Simulated Transcript Card */
+.transcriptCard {
+  background-color: var(--color-pure-white);
+  border: 1.5px solid var(--color-hairline);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(16, 39, 68, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+}
+
+.transcriptMetaBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-hairline);
+  padding-bottom: 1rem;
+}
+
+.speakerProfile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.speakerAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border: 2px solid var(--color-hairline);
+}
+
+.speakerName {
+  font-weight: 600;
+  color: var(--color-deep-navy);
+  font-size: 1rem;
+}
+
+.speakerRole {
+  font-size: 0.75rem;
+  color: var(--color-secondary-text);
+}
+
+.simulatedPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: #F1EFEA;
+  color: #526072;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.quoteBubble {
+  background-color: var(--color-light-cream);
+  border-left: 4px solid var(--color-action-orange);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--color-deep-navy);
+  font-style: italic;
+}
+
+/* Derived Results Section */
+.resultsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.resultsHeading {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-secondary-text);
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .resultsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.resultCard {
+  background-color: var(--color-pure-white);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  box-shadow: 0 2px 6px rgba(16, 39, 68, 0.04);
+}
+
+.cardConfirmed {
+  border-color: var(--color-action-orange);
+  background-color: #FFF9F6;
+}
+
+.cardSafe {
+  border-color: var(--color-success-green);
+  background-color: #F8FCF9;
+}
+
+.resultIconCircle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconConfirmed {
+  background-color: #FEECE7;
+  color: var(--color-action-orange);
+}
+
+.iconSafe {
+  background-color: #EDF7F0;
+  color: var(--color-success-green);
+}
+
+.iconPending {
+  background-color: #F1EFEA;
+  color: var(--color-secondary-text);
+}
+
+.resultCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.resultCategory {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-secondary-text);
+}
+
+.resultTitle {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-deep-navy);
+}
+
+.resultStatusText {
+  font-size: 0.8125rem;
+  color: var(--color-secondary-text);
+  line-height: 1.4;
+}
+
+/* Footer Actions */
+.actionFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+@media (min-width: 600px) {
+  .actionFooter {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.primaryActionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.95rem 2.25rem;
+  background-color: var(--color-action-orange);
+  color: var(--color-pure-white);
+  border: none;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-neo-btn);
+  transition: all var(--transition-fast);
+}
+
+.primaryActionBtn:hover {
+  background-color: #E03E12;
+  box-shadow: var(--shadow-neo-btn-hover);
+  transform: translateY(-2px);
+}
+
+.secondaryActionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.75rem;
+  background-color: transparent;
+  color: var(--color-deep-navy);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-btn);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.secondaryActionBtn:hover {
+  background-color: var(--color-light-cream);
+  border-color: var(--color-primary-navy);
+}

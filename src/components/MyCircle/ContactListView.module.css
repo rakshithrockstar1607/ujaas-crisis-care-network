@@ -1,0 +1,141 @@
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  width: 100%;
+}
+
+.contactCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background-color: var(--color-pure-white);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(16, 39, 68, 0.05);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+  width: 100%;
+}
+
+.contactCard:hover {
+  border-color: var(--color-primary-navy);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 39, 68, 0.1);
+}
+
+.contactCard:focus-visible {
+  outline: 2px solid var(--color-action-orange);
+  outline-offset: 2px;
+}
+
+.attentionCard {
+  border-color: var(--color-golden-amber);
+  background-color: var(--color-light-cream);
+  box-shadow: 0 4px 14px rgba(246, 165, 58, 0.15);
+}
+
+.leftGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatarWrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-hairline);
+  display: block;
+}
+
+.infoGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.contactName {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-deep-navy);
+}
+
+.relationshipBadge {
+  font-size: 0.75rem;
+  color: var(--color-secondary-text);
+  background-color: #F1EFEA;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.locationText {
+  font-size: 0.8125rem;
+  color: var(--color-secondary-text);
+  margin-top: 0.2rem;
+}
+
+.rightGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.statusAttention {
+  background-color: rgba(246, 165, 58, 0.18);
+  color: #B45309;
+  border: 1px solid rgba(246, 165, 58, 0.4);
+}
+
+.statusPartial {
+  background-color: rgba(40, 115, 70, 0.14);
+  color: #1E6038;
+  border: 1px solid rgba(40, 115, 70, 0.35);
+}
+
+.statusOk {
+  background-color: #F1EFEA;
+  color: #4A5568;
+}
+
+.arrowIcon {
+  color: var(--color-secondary-text);
+  transition: transform var(--transition-fast);
+}
+
+.contactCard:hover .arrowIcon {
+  color: var(--color-action-orange);
+  transform: translateX(3px);
+}
+
+.emptyState {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--color-secondary-text);
+  background-color: var(--color-light-cream);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--color-hairline);
+}

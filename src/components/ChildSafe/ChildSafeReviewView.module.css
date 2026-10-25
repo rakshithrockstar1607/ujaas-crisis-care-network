@@ -1,0 +1,415 @@
+.container {
+  min-height: calc(100vh - 84px);
+  background-color: #FAF7F0;
+  padding: var(--page-top-padding-mobile) 1.25rem 5rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: var(--page-top-padding) 2rem 5rem;
+  }
+}
+
+.contentWrap {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* Stepper Bar */
+.stepperBar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.stepPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: rgba(16, 39, 68, 0.08);
+  color: #526072;
+}
+
+.stepPillDone {
+  background-color: rgba(40, 115, 70, 0.12);
+  color: #287346;
+}
+
+.stepPillActive {
+  background-color: #102744;
+  color: #FFFFFF;
+}
+
+.stepperDivider {
+  height: 1px;
+  flex: 1;
+  background-color: #DDD8CE;
+}
+
+/* Header */
+.header {
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #F45124;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  color: #102744;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2.75rem;
+  }
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #526072;
+  line-height: 1.55;
+  max-width: 720px;
+}
+
+/* Editorial Layout Grid */
+.reviewGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .reviewGrid {
+    grid-template-columns: 320px 1fr 300px;
+    gap: 2rem;
+  }
+}
+
+/* Left Column: Quick Case Overview Card */
+.overviewCard {
+  background-color: #FFFFFF;
+  border: 1px solid #DDD8CE;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 4px 16px -4px rgba(16, 39, 68, 0.05);
+}
+
+.overviewHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #FAF7F0;
+}
+
+.overviewIconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #FFF9F1;
+  color: #F45124;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overviewTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #102744;
+}
+
+.overviewMetaRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.overviewMetaLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #7A889B;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.overviewMetaValue {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #102744;
+}
+
+.statusBadgeDraft {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  background-color: rgba(246, 165, 58, 0.15);
+  color: #9C5B00;
+}
+
+.simBadge {
+  font-size: 0.72rem;
+  color: #7A889B;
+  background-color: #FAF7F0;
+  padding: 0.4rem 0.65rem;
+  border-radius: 6px;
+  line-height: 1.4;
+}
+
+/* Center Column: Detailed Review Sections */
+.centerCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sectionCard {
+  background-color: #FFFFFF;
+  border: 1px solid #DDD8CE;
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.sectionHeading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #102744;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.editBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #F45124;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.15s ease;
+}
+
+.editBtn:hover {
+  background-color: rgba(244, 81, 36, 0.08);
+}
+
+.sectionBodyText {
+  font-size: 0.92rem;
+  color: #526072;
+  line-height: 1.55;
+}
+
+.badgeRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.pillTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background-color: #FAF7F0;
+  color: #102744;
+  border: 1px solid #DDD8CE;
+}
+
+/* Acknowledgement Checkbox */
+.ackBox {
+  background-color: #FFF9F1;
+  border: 1.5px solid #F6A53A;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  cursor: pointer;
+}
+
+.ackCheck {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 2px solid #102744;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.ackCheckActive {
+  background-color: #102744;
+}
+
+.ackLabel {
+  font-size: 0.88rem;
+  color: #102744;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+/* Right Column: What Happens Next */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.nextStepsCard {
+  background-color: #FFFFFF;
+  border: 1px solid #DDD8CE;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.nextStepsTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #102744;
+}
+
+.nextStepList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.nextStepItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.84rem;
+  color: #526072;
+  line-height: 1.45;
+}
+
+.nextStepNum {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #FAF7F0;
+  color: #102744;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid #DDD8CE;
+}
+
+.nextStepHighlight {
+  font-weight: 700;
+  color: #102744;
+}
+
+/* Action Buttons Row */
+.actionsBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border: 1.5px solid #DDD8CE;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  color: #526072;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.backBtn:hover {
+  border-color: #102744;
+  color: #102744;
+}
+
+.recordBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.25rem;
+  background-color: #F45124;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.recordBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.recordBtn:not(:disabled):hover {
+  background-color: #E03E12;
+  transform: translateY(-1px);
+}

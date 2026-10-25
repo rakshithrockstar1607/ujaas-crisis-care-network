@@ -1,0 +1,42 @@
+/* Canela Serif Typeface Definitions */
+@font-face {
+  font-family: 'Canela';
+  src: url('../../public/fonts/canela/Canela-Light.woff2') format('woff2'),
+       url('../../public/fonts/canela/Canela-Light-Trial.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Canela';
+  src: url('../../public/fonts/canela/Canela-Regular-Trial.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Canela';
+  src: url('../../public/fonts/canela/Canela-Medium-Trial.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Canela';
+  src: url('../../public/fonts/canela/Canela-Bold.woff2') format('woff2'),
+       url('../../public/fonts/canela/Canela-Bold-Trial.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Canela';
+  src: url('../../public/fonts/canela/Canela-RegularItalic-Trial.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}

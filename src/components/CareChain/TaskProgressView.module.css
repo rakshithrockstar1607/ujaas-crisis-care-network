@@ -1,0 +1,317 @@
+.pageContainer {
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+  background-color: var(--color-bg-ivory);
+  padding: var(--page-top-padding-mobile) 1.25rem 4rem;
+}
+
+@media (min-width: 768px) {
+  .pageContainer {
+    padding: var(--page-top-padding) 2rem 5rem;
+  }
+}
+
+.inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-secondary-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  align-self: flex-start;
+  transition: color var(--transition-fast);
+}
+
+.backBtn:hover {
+  color: var(--color-action-orange);
+}
+
+.headerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.eyebrowWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.eyebrowLine {
+  display: block;
+  width: 32px;
+  height: 2px;
+  background-color: var(--color-action-orange);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-action-orange);
+}
+
+.headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  color: var(--color-deep-navy);
+  line-height: 1.15;
+}
+
+.subheadline {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  color: var(--color-secondary-text);
+  line-height: 1.5;
+}
+
+/* Status Overview Card */
+.overviewCard {
+  background-color: var(--color-pure-white);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-shadow: 0 4px 14px rgba(16, 39, 68, 0.04);
+}
+
+.overviewLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border: 2px solid var(--color-hairline);
+}
+
+.overviewTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-deep-navy);
+}
+
+.overviewSub {
+  font-size: 0.8125rem;
+  color: var(--color-secondary-text);
+}
+
+.helperBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  background-color: #EBF8FF;
+  border: 1px solid #BEE3F8;
+  color: #2B6CB0;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+/* Timeline Container */
+.timelineCard {
+  background-color: var(--color-pure-white);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-xl);
+  padding: 2rem 2.25rem;
+  box-shadow: 0 4px 18px rgba(16, 39, 68, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.timelineHeading {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-secondary-text);
+  border-bottom: 1px solid var(--color-hairline);
+  padding-bottom: 0.75rem;
+  margin: 0;
+}
+
+.timelineList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  position: relative;
+}
+
+/* Connecting track line */
+.timelineTrack {
+  position: absolute;
+  top: 18px;
+  bottom: 24px;
+  left: 17px;
+  width: 2px;
+  background-color: var(--color-hairline);
+  z-index: 1;
+}
+
+.timelineItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.stepIconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: var(--color-pure-white);
+  border: 2px solid var(--color-hairline);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--color-secondary-text);
+}
+
+.stepDone {
+  background-color: var(--color-success-green);
+  border-color: var(--color-success-green);
+  color: var(--color-pure-white);
+}
+
+.stepActive {
+  background-color: var(--color-action-orange);
+  border-color: var(--color-action-orange);
+  color: var(--color-pure-white);
+  box-shadow: 0 0 0 4px rgba(244, 81, 36, 0.2);
+}
+
+.stepContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stepTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.stepTitle {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-deep-navy);
+}
+
+.stepTimestamp {
+  font-size: 0.75rem;
+  color: var(--color-secondary-text);
+  font-weight: 500;
+}
+
+.stepDescription {
+  font-size: 0.875rem;
+  color: var(--color-secondary-text);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.stepActionArea {
+  margin-top: 0.75rem;
+}
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-btn);
+  background-color: var(--color-action-orange);
+  color: var(--color-pure-white);
+  border: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-neo-btn);
+  transition: all var(--transition-fast);
+}
+
+.actionBtn:hover {
+  background-color: #E03E12;
+  box-shadow: var(--shadow-neo-btn-hover);
+  transform: translateY(-2px);
+}
+
+.simulateConfirmBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-btn);
+  background-color: var(--color-primary-navy);
+  color: var(--color-pure-white);
+  border: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-neo-btn);
+  transition: all var(--transition-fast);
+}
+
+.simulateConfirmBtn:hover {
+  background-color: var(--color-deep-navy);
+  transform: translateY(-2px);
+}
+
+.viewRecognitionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-btn);
+  background-color: var(--color-success-green);
+  color: var(--color-pure-white);
+  border: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-neo-btn);
+  transition: all var(--transition-fast);
+}
+
+.viewRecognitionBtn:hover {
+  background-color: #216039;
+  transform: translateY(-2px);
+}

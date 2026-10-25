@@ -1,0 +1,81 @@
+.cardContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform, opacity;
+  z-index: 30;
+  cursor: pointer;
+  transform-origin: center center;
+  transition: box-shadow var(--transition-fast);
+}
+
+.cardFrame {
+  position: relative;
+  background-color: var(--color-pure-white);
+  padding: 5px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-pure-white);
+  box-shadow: 0 16px 36px -8px rgba(9, 28, 51, 0.30), 0 4px 10px rgba(9, 28, 51, 0.12);
+  overflow: hidden;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.cardContainer:hover .cardFrame {
+  transform: scale(1.05);
+  border-color: var(--color-action-orange);
+}
+
+.cardContainer:focus-visible {
+  outline: 3px solid var(--color-action-orange);
+  outline-offset: 4px;
+}
+
+.picture {
+  display: block;
+  width: 100%;
+  border-radius: calc(var(--radius-md) - 5px);
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: inherit;
+  filter: contrast(1.04);
+}
+
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(246, 165, 58, 0.12), transparent 60%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.tapPill {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: rgba(9, 28, 51, 0.88);
+  backdrop-filter: blur(4px);
+  color: var(--color-pure-white);
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.cardContainer:hover .tapPill {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

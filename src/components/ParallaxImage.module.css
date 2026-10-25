@@ -1,0 +1,209 @@
+.imageStageContainer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--color-bg-ivory);
+}
+
+/* 
+  Parallax Mover with Overscan 
+  On desktop, anchors right while preserving natural 16:9 aspect ratio and 24px overscan
+  so that the elderly man, wheelchair, hands and woman are always framed perfectly
+  without ever clipping edges during 2D parallax.
+*/
+.parallaxMover {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  width: calc(100% + 32px);
+  height: calc(100% + 32px);
+  will-change: transform;
+}
+
+@media (min-width: 992px) {
+  .parallaxMover {
+    top: -24px;
+    bottom: -24px;
+    right: -24px;
+    left: auto;
+    height: calc(100% + 48px);
+    width: calc((100% + 48px) * 1.777);
+    max-width: none;
+  }
+}
+
+.picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.mainImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 72% 30%;
+  will-change: transform;
+  transform-origin: center center;
+  transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: contrast(1.03) saturate(1.04);
+}
+
+@media (min-width: 992px) {
+  .mainImg {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+    object-position: right center;
+  }
+}
+
+/* 
+  Continuous Progressive Ivory Overlay Mask
+  Seamlessly blends photograph into ivory:
+  - Left region (0% - 18%): 100% solid ivory (#FAF7F0) ensuring pristine contrast for text
+  - Subtle photo visibility zone (20% - 38%): Ivory overlay drops to 90% - 88%, allowing the
+    photograph and dissolving particles to be visible very slightly (~10-12%)
+  - Smooth organic transition zone (38% - 54%): Ivory overlay gently falls from 88% down to 0%
+  - Right photographic zone (54% - 100%): 0% ivory overlay, keeping woman, elderly man, hands
+    and wheelchair sharp, vibrant, and fully visible
+*/
+.cloudFadeMask {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.horizontalFeather {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .horizontalFeather {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(250, 247, 240, 1.0) 0%,
+      rgba(250, 247, 240, 1.0) 18%,
+      rgba(250, 247, 240, 0.93) 24%,
+      rgba(250, 247, 240, 0.90) 30%,
+      rgba(250, 247, 240, 0.88) 38%,
+      rgba(250, 247, 240, 0.65) 44%,
+      rgba(250, 247, 240, 0.32) 48%,
+      rgba(250, 247, 240, 0.10) 52%,
+      rgba(250, 247, 240, 0.02) 55%,
+      transparent 58%
+    );
+    pointer-events: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .horizontalFeather {
+    background: linear-gradient(
+      to right,
+      rgba(250, 247, 240, 1.0) 0%,
+      rgba(250, 247, 240, 1.0) 18%,
+      rgba(250, 247, 240, 0.93) 24%,
+      rgba(250, 247, 240, 0.90) 30%,
+      rgba(250, 247, 240, 0.88) 38%,
+      rgba(250, 247, 240, 0.65) 44%,
+      rgba(250, 247, 240, 0.32) 48%,
+      rgba(250, 247, 240, 0.10) 52%,
+      rgba(250, 247, 240, 0.02) 55%,
+      transparent 58%
+    );
+  }
+}
+
+@media (min-width: 1920px) {
+  .horizontalFeather {
+    background: linear-gradient(
+      to right,
+      rgba(250, 247, 240, 1.0) 0%,
+      rgba(250, 247, 240, 1.0) 18%,
+      rgba(250, 247, 240, 0.93) 24%,
+      rgba(250, 247, 240, 0.90) 30%,
+      rgba(250, 247, 240, 0.88) 38%,
+      rgba(250, 247, 240, 0.65) 44%,
+      rgba(250, 247, 240, 0.32) 48%,
+      rgba(250, 247, 240, 0.10) 52%,
+      rgba(250, 247, 240, 0.02) 55%,
+      transparent 58%
+    );
+  }
+}
+
+.mobileTopMist {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .horizontalFeather {
+    display: none;
+  }
+  .mobileTopMist {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 22px;
+    background: linear-gradient(to bottom, rgba(250, 247, 240, 0.35) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+}
+
+/* 
+  Subtle Lower-Edge Ground Mist
+  Gently connects with the lower hero floor without obscuring clasped hands or wheelchair.
+*/
+.lowerGroundMist {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8%;
+  background: linear-gradient(
+    to top,
+    var(--color-bg-ivory) 0%,
+    rgba(250, 247, 240, 0.22) 40%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Warm Sunset Ambient Hue Unification */
+.warmSunsetGaze {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 65%;
+  height: 65%;
+  background: radial-gradient(
+    circle at 75% 35%,
+    rgba(255, 118, 44, 0.08) 0%,
+    rgba(246, 165, 58, 0.03) 45%,
+    transparent 72%
+  );
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 4;
+}
